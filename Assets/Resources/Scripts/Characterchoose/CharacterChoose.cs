@@ -8,12 +8,14 @@ public class CharacterChoose : MonoBehaviour
     public GameObject[] _characters;
     public GameObject _image;
     public int _imageIndex = 0;
+    public string characterName = "";
 
     private PlayerActionData actionData;
 
     public void OnClickLeft()
     {
         _imageIndex = ((0 == _imageIndex) ? _characters.Length : _imageIndex) - 1;
+        characterName = _characters[_imageIndex].gameObject.GetComponent<PlayerActionData>().Name;
         OnClickAnnoying();
     }
 

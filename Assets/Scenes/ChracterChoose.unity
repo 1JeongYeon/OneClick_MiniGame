@@ -2447,6 +2447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -2529,14 +2530,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characters:
+  - {fileID: 2156123483828537361, guid: 346889fbcbbd3a6b79389dfe56b06bd0, type: 3}
   - {fileID: 2156123483828537361, guid: 3f6706e65067e026fa6583ee2f0b317c, type: 3}
-  - {fileID: 2156123483828537361, guid: 08639f5b4afa0a3da894dcd97e8b24fb, type: 3}
+  - {fileID: 2156123483828537361, guid: d0199aaa304660bb2a6d1a794007f6dc, type: 3}
   - {fileID: 2156123483828537361, guid: d51b8ab275ee603a39c2f8a36d496dc8, type: 3}
-  - {fileID: 2156123483828537361, guid: ec72fd2fb28ee719587fd91abd7931eb, type: 3}
   - {fileID: 2156123483828537361, guid: 84efa92ea10ca7672b390d53af1c89d0, type: 3}
   - {fileID: 2156123483828537361, guid: fb615c83dab7f189f9623e928c5afb2e, type: 3}
-  - {fileID: 2156123483828537361, guid: d0199aaa304660bb2a6d1a794007f6dc, type: 3}
-  - {fileID: 2156123483828537361, guid: 346889fbcbbd3a6b79389dfe56b06bd0, type: 3}
+  - {fileID: 2156123483828537361, guid: ec72fd2fb28ee719587fd91abd7931eb, type: 3}
+  - {fileID: 2156123483828537361, guid: 08639f5b4afa0a3da894dcd97e8b24fb, type: 3}
   _image: {fileID: 2041609865}
   _imageIndex: 0
 --- !u!1 &1536848341
