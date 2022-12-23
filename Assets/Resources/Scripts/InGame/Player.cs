@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // player
-    public GameObject[] playerChracters;
-    private int characterIndex = 0;
+    public SpriteRenderer playerChracter;
+    public int characterIndex = 0;
     public string chracterName = "";
 
     // player 액션, 충돌 관련
@@ -15,12 +15,14 @@ public class Player : MonoBehaviour
     private Collider2D playerCollider;
     [SerializeField]
     private Collider2D playerAttackCollider;
-    [SerializeField]
-    private SpriteRenderer playerAction;
+
+    private bool isHit = false;
+    private bool isAttack = false;
 
     [SerializeField]
     private Button playerActionButton;
 
+    private CharacterChoose characterData;
     public PlayerActionData playerActionData;
 
     // 이로운 총알, 해로운 총알, 아무 상관없는 총알(돈) 3개 들어올 것임
@@ -30,55 +32,69 @@ public class Player : MonoBehaviour
     {
         // bullet 종류에 따라 맞으면 피가 줄어들지 돈을 벌지 체력을 회복할지 결정해야하기 때문에 배열로 받아온다.
         bullets = GetComponentsInChildren<Bullet>();
+
+        characterData = FindObjectOfType<CharacterChoose>();
         playerAttackCollider.enabled = false;
 
-        characterIndex = 3;
-        playerActionData = playerChracters[characterIndex].GetComponent<PlayerActionData>();
-        playerActionButton.onClick.AddListener(()=>
+        characterIndex = characterData.characterIndex;
+        chracterName = characterData.characterName;
+
+        playerActionData = characterData.characters[characterIndex].GetComponent<PlayerActionData>();
+        playerChracter.sprite = playerActionData.Stand;
+
+        playerActionButton.onClick.AddListener(() =>
         {
-            PlayerAttack(playerActionData);
+            PlayerAttack();
         });
     }
 
-    public void PlayerAttack(PlayerActionData _playerActionData)
+    private void Update()
     {
-        Debug.Log("Player Attack 함수");
-        playerActionData = _playerActionData;
-        int randomNum = Random.Range(0, 2);
-        float activeDelay = .3f;
-        float time = 0f;
-        if (playerAction.sprite.name == "Stand")
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerAttack();
+        }
+        if (IsInvoking() == false)
+        {
+            if (isAttack == true)
+            {
+                Invoke("PlayerActionReturn", .2f);
+            }
+        }
+        
+    }
+
+    private void PlayerActionReturn()
+    {
+        playerChracter.sprite = playerActionData.Stand;
+        playerAttackCollider.enabled = false;
+        isAttack = false;
+    }
+
+    public void PlayerAttack()
+    {
+        // 공격 모션 3개로 해서
+        int randomNum = Random.Range(0, 3);
+        
+        if (playerChracter.sprite == playerActionData.Stand)
         {
             if (randomNum == 0)
             {
-                playerAction.sprite = playerActionData.Attack0;
+                playerChracter.sprite = playerActionData.Attack0;
+                isAttack = true;
                 playerAttackCollider.enabled = true;
-                time += Time.deltaTime;
-                if (time >= activeDelay)
-                {
-                    playerAction.sprite = playerActionData.Stand;
-                    playerAttackCollider.enabled = false;
-                }
             }
             else if (randomNum == 1)
             {
-                playerAction.sprite = playerActionData.Attack1;
+                playerChracter.sprite = playerActionData.Attack1;
                 playerAttackCollider.enabled = true;
-                if (time >= activeDelay)
-                {
-                    playerAction.sprite = playerActionData.Stand;
-                    playerAttackCollider.enabled = false;
-                }
+                isAttack = true;
             }
-            else
+            else if (randomNum == 2)
             {
-                playerAction.sprite = playerActionData.Attack2;
+                playerChracter.sprite = playerActionData.Attack2;
                 playerAttackCollider.enabled = true;
-                if (time >= activeDelay)
-                {
-                    playerAction.sprite = playerActionData.Stand;
-                    playerAttackCollider.enabled = false;
-                }
+                isAttack = true;
             }
         }
     }

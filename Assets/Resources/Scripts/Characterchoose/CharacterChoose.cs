@@ -5,88 +5,41 @@ using UnityEngine.UI;
 
 public class CharacterChoose : MonoBehaviour
 {
-    public GameObject[] _characters;
-    public GameObject _image;
-    public int _imageIndex = 0;
+    public GameObject[] characters;
+    public GameObject characterImage;
+    public int characterIndex = 0;
     public string characterName = "";
 
-    private PlayerActionData actionData;
+    [SerializeField] private Button goButton;
 
-    public void OnClickLeft()
+    public void Left()
     {
-        _imageIndex = ((0 == _imageIndex) ? _characters.Length : _imageIndex) - 1;
-        characterName = _characters[_imageIndex].gameObject.GetComponent<PlayerActionData>().Name;
-        OnClickAnnoying();
+        characterIndex = ((0 == characterIndex) ? characters.Length : characterIndex) - 1;
+        characterName = characters[characterIndex].GetComponent<PlayerActionData>().Name;
+        CharacterPose();
     }
 
-    public void OnClickRight()
+    public void Right()
     {
-        _imageIndex = ((_characters.Length - 1) == _imageIndex) ?  0 : (_imageIndex + 1);
-        OnClickAnnoying();
+        characterIndex = ((characters.Length - 1) == characterIndex) ?  0 : (characterIndex + 1);
+        characterName = characters[characterIndex].GetComponent<PlayerActionData>().Name;
+        CharacterPose();
     }
 
-    public void OnClickAnnoying()
+    public void CharacterPose()
     {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().Annoying;
+        characterImage.GetComponent<Image>().sprite = characters[characterIndex].GetComponent<PlayerActionData>().Annoying;
     }
 
-    public void OnClickAttack0()
+    public void GO()
     {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().Attack0;
+        DontDestroyOnLoad(gameObject);
+        SceneController.Instance.OpenScene("InGame");
     }
-
-    public void OnClickAttack1()
-    {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().Attack1;
-    }
-
-    public void OnClickAttack2()
-    {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().Attack2;
-    }
-
-    public void OnClickStand()
-    {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().Stand;
-    }
-
-    public void OnClickHit()
-    {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().Hit;
-    }
-
-    public void OnClickGroggy()
-    {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().Groggy;
-    }
-
-    public void OnClickWin()
-    {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().Win;
-    }
-
-    public void OnClickLose()
-    {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().Lose;
-    }
-
-    public void OnClickPortrait()
-    {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().Portrait;
-    }
-
-    public void OnClickPortraitLose()
-    {
-        _image.GetComponent<Image>().sprite = _characters[_imageIndex].GetComponent<PlayerActionData>().PortraitLose;
-    }
-    
 
     void Start()
-    {   
-        OnClickAnnoying();
-    }
-
-    void Update()
-    {   
+    {
+        CharacterPose();
+        characterName = characters[characterIndex].GetComponent<PlayerActionData>().Name;
     }
 }

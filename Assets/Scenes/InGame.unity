@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 305558652}
   - component: {fileID: 305558653}
   - component: {fileID: 305558656}
+  - component: {fileID: 305558657}
   - component: {fileID: 305558655}
   m_Layer: 0
   m_Name: 'Capsule : Player'
@@ -434,21 +435,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a7e0d6d39f0fc4dae74ae61626a84d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerChracters:
-  - {fileID: 2156123483828537361, guid: 346889fbcbbd3a6b79389dfe56b06bd0, type: 3}
-  - {fileID: 2156123483828537361, guid: 3f6706e65067e026fa6583ee2f0b317c, type: 3}
-  - {fileID: 2156123483828537361, guid: d0199aaa304660bb2a6d1a794007f6dc, type: 3}
-  - {fileID: 2156123483828537361, guid: ec72fd2fb28ee719587fd91abd7931eb, type: 3}
-  - {fileID: 2156123483828537361, guid: 08639f5b4afa0a3da894dcd97e8b24fb, type: 3}
-  - {fileID: 2156123483828537361, guid: d51b8ab275ee603a39c2f8a36d496dc8, type: 3}
-  - {fileID: 2156123483828537361, guid: 84efa92ea10ca7672b390d53af1c89d0, type: 3}
-  - {fileID: 2156123483828537361, guid: fb615c83dab7f189f9623e928c5afb2e, type: 3}
+  playerChracter: {fileID: 305558652}
+  characterIndex: 0
   chracterName: 
   playerCollider: {fileID: 305558653}
   playerAttackCollider: {fileID: 1454664601}
-  playerAction: {fileID: 305558652}
   playerActionButton: {fileID: 1731662363}
-  playerActionData: {fileID: 680022151}
+  playerActionData: {fileID: 305558657}
 --- !u!222 &305558656
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -457,6 +450,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305558650}
   m_CullTransparentMesh: 1
+--- !u!114 &305558657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305558650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb5f2e254007f6409a2d87bdab5f300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  Annoying: {fileID: 0}
+  Groggy: {fileID: 0}
+  Hit: {fileID: 0}
+  Win: {fileID: 0}
+  Lose: {fileID: 0}
+  Attack0: {fileID: 0}
+  Attack1: {fileID: 0}
+  Attack2: {fileID: 0}
+  Portrait: {fileID: 0}
+  PortraitLose: {fileID: 0}
+  Stand: {fileID: 0}
 --- !u!1 &334557677
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,7 +813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &680022151
 MonoBehaviour:
   m_ObjectHideFlags: 0

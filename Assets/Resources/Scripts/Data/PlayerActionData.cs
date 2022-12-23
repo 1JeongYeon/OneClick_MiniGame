@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// [CreateAssetMenu(fileName = "New Chracter", menuName = "New Chracter/chracter")]
-public class PlayerActionData : /*ScriptableObject*/MonoBehaviour
+public class PlayerActionData : MonoBehaviour
 {
     public string Name;
     public Sprite Annoying;
