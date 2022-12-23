@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
         {
             PlayerAttack();
         }
+
+        // Invoke 함수가 실행중이 아닐때 isAttack이 true일때만 함수 실행
         if (IsInvoking() == false)
         {
             if (isAttack == true)
@@ -96,6 +98,16 @@ public class Player : MonoBehaviour
                 playerAttackCollider.enabled = true;
                 isAttack = true;
             }
+        }
+    }
+
+    // 아직 안쓰는 함수
+    public void PlayerHit()
+    {
+        isHit = true;
+        if (playerChracter.sprite == playerActionData.Stand)
+        {
+            playerChracter.sprite = playerActionData.Hit;
         }
     }
 }
