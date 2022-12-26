@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public int characterIndex = 0;
     public string chracterName = "";
 
-    // player ¾×¼Ç, Ãæµ¹ °ü·Ã
+    // player ì•¡ì…˜, ì¶©ëŒ ê´€ë ¨
     [SerializeField]
     private Collider2D playerCollider;
     [SerializeField]
@@ -25,12 +25,12 @@ public class Player : MonoBehaviour
     private CharacterChoose characterData;
     public PlayerActionData playerActionData;
 
-    // ÀÌ·Î¿î ÃÑ¾Ë, ÇØ·Î¿î ÃÑ¾Ë, ¾Æ¹« »ó°ü¾ø´Â ÃÑ¾Ë(µ·) 3°³ µé¾î¿Ã °ÍÀÓ
+    // ì´ë¡œìš´ ì´ì•Œ, í•´ë¡œìš´ ì´ì•Œ, ì•„ë¬´ ìƒê´€ì—†ëŠ” ì´ì•Œ(ëˆ) 3ê°œ ë“¤ì–´ì˜¬ ê²ƒì„
     private Bullet[] bullets;
 
     private void Start()
     {
-        // bullet Á¾·ù¿¡ µû¶ó ¸ÂÀ¸¸é ÇÇ°¡ ÁÙ¾îµéÁö µ·À» ¹úÁö Ã¼·ÂÀ» È¸º¹ÇÒÁö °áÁ¤ÇØ¾ßÇÏ±â ¶§¹®¿¡ ¹è¿­·Î ¹Ş¾Æ¿Â´Ù.
+        // bullet ì¢…ë¥˜ì— ë”°ë¼ ë§ìœ¼ë©´ í”¼ê°€ ì¤„ì–´ë“¤ì§€ ëˆì„ ë²Œì§€ ì²´ë ¥ì„ íšŒë³µí• ì§€ ê²°ì •í•´ì•¼í•˜ê¸° ë•Œë¬¸ì— ë°°ì—´ë¡œ ë°›ì•„ì˜¨ë‹¤.
         bullets = GetComponentsInChildren<Bullet>();
 
         characterData = FindObjectOfType<CharacterChoose>();
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             PlayerAttack();
         }
 
-        // Invoke ÇÔ¼ö°¡ ½ÇÇàÁßÀÌ ¾Æ´Ò¶§ isAttackÀÌ trueÀÏ¶§¸¸ ÇÔ¼ö ½ÇÇà
+        // Invoke í•¨ìˆ˜ê°€ ì‹¤í–‰ì¤‘ì´ ì•„ë‹ë•Œ isAttackì´ trueì¼ë•Œë§Œ í•¨ìˆ˜ ì‹¤í–‰
         if (IsInvoking() == false)
         {
             if (isAttack == true)
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
 
     public void PlayerAttack()
     {
-        // °ø°İ ¸ğ¼Ç 3°³·Î ÇØ¼­
+        // ê³µê²© ëª¨ì…˜ 3ê°œë¡œ í•´ì„œ
         int randomNum = Random.Range(0, 3);
         
         if (playerChracter.sprite == playerActionData.Stand)
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    // ¾ÆÁ÷ ¾È¾²´Â ÇÔ¼ö
+    // ì•„ì§ ì•ˆì“°ëŠ” í•¨ìˆ˜
     public void PlayerHit()
     {
         isHit = true;
