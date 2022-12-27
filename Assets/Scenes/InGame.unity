@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 92453507}
   - component: {fileID: 92453508}
+  - component: {fileID: 92453510}
+  - component: {fileID: 92453509}
   m_Layer: 0
   m_Name: 'Cannon : Shooting!'
   m_TagString: Untagged
@@ -208,6 +210,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &92453509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92453506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd43738b3d28f7141baab8dd3c7c16ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &92453510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92453506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34742afb28664164e8cdd530bc6730d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBullet: {fileID: 92453509}
+  muzzle: {fileID: 686392528}
 --- !u!1 &206972167
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9, y: 0}
+  m_AnchoredPosition: {x: -7, y: 0}
   m_SizeDelta: {x: 5.12, y: 5.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &305558655
