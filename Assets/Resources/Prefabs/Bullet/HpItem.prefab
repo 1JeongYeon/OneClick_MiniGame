@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1379368614940314165}
   - component: {fileID: 1379368614940314167}
   - component: {fileID: 1379368614940314164}
+  - component: {fileID: 2914224852490071921}
   m_Layer: 0
   m_Name: HpItem
   m_TagString: Untagged
@@ -30,8 +31,7 @@ Transform:
   m_LocalPosition: {x: 180, y: -5, z: -24.327072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 119138270615108253}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -123,51 +123,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.00000011920929}
   serializedVersion: 2
   m_Radius: 0.49999997
---- !u!1 &8416177945161519140
-GameObject:
+--- !u!114 &2914224852490071921
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 119138270615108253}
-  - component: {fileID: 1658309967496555571}
-  m_Layer: 0
-  m_Name: MagnetRange
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &119138270615108253
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8416177945161519140}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1379368614940314163}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1658309967496555571
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8416177945161519140}
+  m_GameObject: {fileID: 1379368614940314160}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 6
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647c5aba8ad31ce4da5a64302db1fab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

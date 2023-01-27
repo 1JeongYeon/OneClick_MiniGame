@@ -3,32 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HPManager : MonoBehaviour
+public class StatusController : MonoBehaviour
 {
-    private static HPManager _instance;
-    public static HPManager Instance
+    private static StatusController _instance;
+    public static StatusController Instance
     {
         get
         {
             if (_instance == null)
-                _instance = FindObjectOfType<HPManager>();
+                _instance = FindObjectOfType<StatusController>();
             return _instance;
         }
     }
-    [SerializeField]
-    public Image[] images_Gauge;
-
-    public const int HP = 0;
 
     public int maxHp;
     public int currentHp;
 
-    private void Update()
+    private void Start()
     {
-        GaugeUpdate();
+        maxHp = currentHp = 100;
     }
 
-    // 체력을 올려주는 총알을 먹었을 때
+
+    // 체력을 올려주는 함수
     public void IncreaseHP(int _count)
     {
         if (currentHp + _count < maxHp)
@@ -41,7 +38,7 @@ public class HPManager : MonoBehaviour
         }
     }
 
-    // 총알에 맞았을 때
+    // 체력 깎이는 함수
     public void DecreaseHP(int _count)
     {
         currentHp -= _count;
@@ -52,9 +49,6 @@ public class HPManager : MonoBehaviour
             // UI 작업 필요
         }
     }
-    private void GaugeUpdate()
-    {
-        images_Gauge[HP].fillAmount = (float)currentHp / maxHp;
-    }
+    
 
 }

@@ -14,6 +14,7 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-        currentBullet.Shooting();   
+        //
+        //currentBullet.Shooting();   
     }
 }

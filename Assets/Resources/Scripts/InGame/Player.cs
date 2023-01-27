@@ -26,14 +26,15 @@ public class Player : MonoBehaviour
     public PlayerActionData playerActionData;
 
     // 이로운 총알, 해로운 총알, 아무 상관없는 총알(돈) 3개 들어올 것임
+    // bullet 종류에 따라 맞으면 피가 줄어들지 돈을 벌지 체력을 회복할지 결정해야하기 때문에 배열로 받아온다.
     private Bullet[] bullets;
 
     private void Start()
     {
-        // bullet 종류에 따라 맞으면 피가 줄어들지 돈을 벌지 체력을 회복할지 결정해야하기 때문에 배열로 받아온다.
+        
         bullets = GetComponentsInChildren<Bullet>();
-
         characterData = FindObjectOfType<CharacterChoose>();
+
         playerAttackCollider.enabled = false;
 
         characterIndex = characterData.characterIndex;
@@ -50,6 +51,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        TryPlayerAttack();
+    }
+
+    private void TryPlayerAttack()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerAttack();
@@ -63,7 +69,6 @@ public class Player : MonoBehaviour
                 Invoke("PlayerActionReturn", .2f);
             }
         }
-        
     }
 
     private void PlayerActionReturn()
