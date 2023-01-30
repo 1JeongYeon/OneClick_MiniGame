@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class GoldCoinBullet : Bullet
 {
-    public override void InitSetting()
+    public override void InitSetting(TMPro.TMP_Text txt)
     {
-        bulletData.delayTime = 0.3f;
+        bulletData.delayTime = 0.5f;
         bulletData.information = "ÇöÀç ÃÑ¾Ë : °ñµåÄÚÀÎÃÑ¾Ë";
-        bulletData.soundEffect = "µþ¶û";
-        bulletData.maxBullet = -1;
+        bulletData.soundEffect = "Bling Bling~";
+        bulletData.maxBullet = 30;
+        bulletData.damage = 0; // µ· ¸Ô°í µ¥¹ÌÁö ´Þ¸é ¼­·¯¿ì´Ï±î
+        bulletData.bulletSpeed = 10f;
         bulletData.bullet = Resources.Load<GameObject>("Prefabs/Bullet/GoldCoin");
     }
 
-    /*public override void Shooting()
+    public override void Shooting(Transform muzzle, TMPro.TMP_Text effect)
     {
-        base.Shooting();
-    }*/
+        base.Shooting(muzzle, effect);
+    }
 }

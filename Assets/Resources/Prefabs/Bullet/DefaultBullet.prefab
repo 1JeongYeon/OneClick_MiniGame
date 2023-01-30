@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3243612853610473171}
   - component: {fileID: 3243612853610473168}
   - component: {fileID: 7494985071562161377}
+  - component: {fileID: 699712353731490838}
   m_Layer: 0
   m_Name: DefaultBullet
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 34e7b4daa39302d4bb7a94a96a0b39e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -123,7 +124,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.17
+  m_Radius: 0.5
 --- !u!114 &7494985071562161377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +137,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd43738b3d28f7141baab8dd3c7c16ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTrans: {fileID: 0}
+--- !u!50 &699712353731490838
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3243612853610473164}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8560485294876757252
 GameObject:
   m_ObjectHideFlags: 0

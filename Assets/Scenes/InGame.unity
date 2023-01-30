@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 92453508}
   - component: {fileID: 92453510}
   - component: {fileID: 92453509}
+  - component: {fileID: 92453512}
+  - component: {fileID: 92453511}
   m_Layer: 0
   m_Name: 'Cannon : Shooting!'
   m_TagString: Untagged
@@ -236,6 +238,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentBullet: {fileID: 92453509}
   muzzle: {fileID: 686392528}
+  effect: {fileID: 203842302891285158, guid: b757050f5eaf6d745be9ed05826d76f1, type: 3}
+  info: {fileID: 0}
+--- !u!114 &92453511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92453506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647c5aba8ad31ce4da5a64302db1fab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &92453512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92453506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0b6168a666afe439c3fb42be87fb4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &206972167
 GameObject:
   m_ObjectHideFlags: 0
