@@ -587,7 +587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'avoid
+  m_text: 'CRASH
 
     what''s bad for you'
   m_isRightToLeft: 0
