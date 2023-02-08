@@ -20,10 +20,10 @@ public abstract class Bullet : MonoBehaviour
 
     private bool shootAble = false;
     private float delayTime = 0f;
-    private  Transform playerTrans;
+    private Transform playerTrans;
     private Transform bulletTrans;
     private Rigidbody2D bulletRigidBody;
-    private float rotateSpeed = 200f;
+    private float rotateSpeed = 2f;
     private float dis;
 
     private void Start()
@@ -37,17 +37,18 @@ public abstract class Bullet : MonoBehaviour
     {
         if (shootAble == true)
         {
+            // 총알을 생성
             var bullet = Instantiate(bulletData.bullet, muzzle.position, Quaternion.identity);
-           /* bulletRigidBody = bulletData.bullet.GetComponent<Rigidbody2D>();
-            bulletTrans = bulletData.bullet.transform;*/
-           // GuideMissile();
-
-
-            //bullet.transform.rotation = Quaternion.LookRotation(transform.position - playerTrans.position);
-
-            //dis = Vector3.Distance(bulletTrans.position, playerTrans.position);
-
-            // DiffusionMissileMoveOperation(bullet.GetComponent<Bullet>());
+            // 총알 중력 부여
+            bulletRigidBody = bullet.GetComponent<Rigidbody2D>();
+            // 방향
+            Vector3 dir = (playerTrans.position - bullet.transform.position).normalized;
+            // 각도
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Quaternion rotTarget = Quaternion.AngleAxis(-angle, Vector3.forward);
+            bullet.transform.rotation = Quaternion.Slerp(bullet.transform.rotation, rotTarget, Time.deltaTime * rotateSpeed);
+            bulletRigidBody.velocity = new Vector2(dir.x * bulletData.bulletSpeed, dir.y * bulletData.bulletSpeed); 
+            
 
             var fireEffect = Instantiate(soundText);
             fireEffect.transform.position = muzzle.position + new Vector3(0, 3f, 0);
@@ -70,16 +71,8 @@ public abstract class Bullet : MonoBehaviour
         }
     }
 
-    // ----------------- 스크립트 하나 더 만들어서 관리해야 할듯...
-    private void GuideMissile()
-    {
-        Vector3 dir = (playerTrans.position - bulletTrans.position).normalized;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Quaternion rotTarget = Quaternion.AngleAxis(-angle, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotTarget, Time.deltaTime * rotateSpeed);
-        bulletRigidBody.velocity = new Vector2(dir.x * bulletData.bulletSpeed, dir.y * bulletData.bulletSpeed);
-    }
-    // instantiate되는 총알이 이 정보를 담고 있어야 하는데 그러질 못해서 null이 뜨는중
+    
+    // 스테이지 높아질 때 난이도를 주기 위해 총알 움직임에 변수를 넣을 코드 아직 안쓸것이다.
     private void DiffusionMissileMoveOperation(Bullet _bullet)
     {
         Debug.Log(" 유도탄 ");

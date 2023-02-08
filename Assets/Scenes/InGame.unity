@@ -153,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 92453506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 686392528}
@@ -237,6 +237,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentBullet: {fileID: 92453512}
+  bullets:
+  - {fileID: 5311052188669820367, guid: aa77f0365cd315347972c13c6fbdbf7c, type: 3}
+  - {fileID: 5432227832954308138, guid: ec205dd5bba7db44db980e2b4b6d5bc9, type: 3}
+  - {fileID: 5912352389232544565, guid: 5140328d16381ee49b0defc0df522fef, type: 3}
   muzzle: {fileID: 686392528}
   effect: {fileID: 203842302891285158, guid: b757050f5eaf6d745be9ed05826d76f1, type: 3}
   info: {fileID: 0}
@@ -633,7 +637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -983,7 +986,6 @@ GameObject:
   m_Component:
   - component: {fileID: 686392528}
   - component: {fileID: 686392529}
-  - component: {fileID: 686392530}
   m_Layer: 0
   m_Name: 'Square : Muzzle'
   m_TagString: Untagged
@@ -1058,19 +1060,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &686392530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686392527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9faa4d6cdefe964db9cee3e13f02197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTargetTr: {fileID: 305558654}
 --- !u!1 &727745771
 GameObject:
   m_ObjectHideFlags: 0
