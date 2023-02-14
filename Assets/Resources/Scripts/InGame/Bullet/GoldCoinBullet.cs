@@ -10,6 +10,7 @@ public class GoldCoinBullet : Bullet
         bulletData.information = "현재 총알 : 골드코인총알";
         bulletData.soundEffect = "Bling Bling~";
         bulletData.maxBullet = 30;
+        bulletData.fixedMaxBullet = 30;
         bulletData.damage = 0; // 돈 먹고 데미지 달면 서러우니까
         bulletData.bulletSpeed = 15f;
         bulletData.bullet = Resources.Load<GameObject>("Prefabs/Bullet/GoldCoinBullet");

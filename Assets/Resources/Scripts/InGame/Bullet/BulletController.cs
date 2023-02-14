@@ -16,7 +16,7 @@ public class BulletController : MonoBehaviour
     public TMP_Text effect;
     public TMP_Text info;
 
-    private int maxBulletMinus;
+    private int maxBulletFixed;
     void Start()
     {
         lastBullet = currentBullet;
@@ -33,25 +33,7 @@ public class BulletController : MonoBehaviour
         }
 
         // 총알 생성 함수 실행
-        currentBullet.Shooting(muzzle, effect);
-
-        // 랜덤 변수 만들어서 총알 바꿔야하는데 헷갈려 죽겠음...
-        if (currentBullet.bulletData.maxBullet != 0)
-        {
-            int rand = Random.Range(0, 100);
-            if (rand <= 10)
-            {
-                currentBullet = GetComponent<HPBullet>(); // 10퍼센트 확률
-            }
-            else if (rand <= 20)
-            {
-                currentBullet = GetComponent<GoldCoinBullet>(); // 20퍼
-            }
-            else
-            {
-                currentBullet = GetComponent<DefaultBullet>();
-            }
-        }
+        RandomBulletSetting();
 
         if (currentBullet.bulletData.maxBullet == 0)
         {
@@ -59,26 +41,27 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    private void RandomBulletSetting() // 수정 필요
+    private void RandomBulletSetting() 
     {
-        int rndIndex = Random.Range(0, bullets.Length + 1);
+        int rndIndex = Random.Range(0, 100);
 
-        if (rndIndex == 0)
+        if (currentBullet != null)
         {
-            currentBullet = GetComponent<DefaultBullet>();
-        }
-        else if (rndIndex == 1)
-        {
-            currentBullet = GetComponent<HPBullet>(); // 10퍼센트 확률
-        }
-        else if (rndIndex == 2)
-        {
-            currentBullet = GetComponent<GoldCoinBullet>(); // 20퍼
-        }
-        else
-        {
-            currentBullet = GetComponent<DefaultBullet>();
+            if (rndIndex <= 5 && rndIndex >= 0)
+            {
+                currentBullet = GetComponent<HPBullet>(); // 5퍼센트 확률
+                currentBullet.Shooting(muzzle, effect);
+                return;
+            }
+            if (rndIndex <= 25 && rndIndex >= 6)
+            {
+                currentBullet = GetComponent<GoldCoinBullet>(); // 25퍼센트 확률
+                currentBullet.Shooting(muzzle, effect);
+                return;
+            }
+             // 나머지 확률은 기본총알로
+                currentBullet = GetComponent<DefaultBullet>();
+                currentBullet.Shooting(muzzle, effect);
         }
     }
-
 }

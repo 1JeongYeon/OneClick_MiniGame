@@ -6,12 +6,12 @@ public struct BulletData
 {
     public float delayTime;
     public int maxBullet;
+    public int fixedMaxBullet;
     public string information;
     public string soundEffect;
     public int damage;
     public float bulletSpeed;
     public GameObject bullet;
-    
 }
 
 public abstract class Bullet : MonoBehaviour
