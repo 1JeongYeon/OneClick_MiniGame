@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34742afb28664164e8cdd530bc6730d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentBullet: {fileID: 92453512}
+  currentBullet: {fileID: 92453509}
   bullets:
   - {fileID: 5311052188669820367, guid: aa77f0365cd315347972c13c6fbdbf7c, type: 3}
   - {fileID: 5432227832954308138, guid: ec205dd5bba7db44db980e2b4b6d5bc9, type: 3}
@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 305558656}
   - component: {fileID: 305558655}
   - component: {fileID: 305558657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'Capsule : Player'
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -637,6 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -1444,6 +1445,64 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1148170242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1148170245}
+  - component: {fileID: 1148170243}
+  m_Layer: 0
+  m_Name: 'Square: DestroyZone'
+  m_TagString: DestroyZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1148170243
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148170242}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &1148170245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148170242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.7388, y: -0.4939, z: 0}
+  m_LocalScale: {x: 3.4413385, y: 16.012285, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215325505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1454664600}
   - component: {fileID: 1454664601}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'Collider : AttackRange'
   m_TagString: Untagged
   m_Icon: {fileID: 0}

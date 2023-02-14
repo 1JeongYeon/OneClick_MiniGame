@@ -11,8 +11,8 @@ public class GoldCoinBullet : Bullet
         bulletData.soundEffect = "Bling Bling~";
         bulletData.maxBullet = 30;
         bulletData.damage = 0; // 돈 먹고 데미지 달면 서러우니까
-        bulletData.bulletSpeed = 10f;
-        bulletData.bullet = Resources.Load<GameObject>("Prefabs/Bullet/GoldCoin");
+        bulletData.bulletSpeed = 15f;
+        bulletData.bullet = Resources.Load<GameObject>("Prefabs/Bullet/GoldCoinBullet");
     }
 
     public override void Shooting(Transform muzzle, TMPro.TMP_Text effect)

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4996072578102495018}
   - component: {fileID: 7632778733325416579}
   - component: {fileID: 3482417089264623891}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Particle System : Fire'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4825,9 +4825,9 @@ GameObject:
   - component: {fileID: 1520355369562677464}
   - component: {fileID: 5311052188669820367}
   - component: {fileID: 7782276125102674801}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DefaultBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

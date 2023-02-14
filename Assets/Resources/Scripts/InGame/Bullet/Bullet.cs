@@ -51,9 +51,10 @@ public abstract class Bullet : MonoBehaviour
             
 
             var fireEffect = Instantiate(soundText);
+
             fireEffect.transform.position = muzzle.position + new Vector3(0, 3f, 0);
             fireEffect.text = bulletData.soundEffect;
-
+            Destroy(fireEffect.gameObject, .25f);
             shootAble = false;
 
             // 총알 최대치가 중요한지 고민 해야 함. 라운드를 시간으로 할지 아니면 총 총알의 갯수를 다 소진했을 때 종료할지 고민 ㄱㄱ
@@ -103,5 +104,11 @@ public abstract class Bullet : MonoBehaviour
         bulletTrans.rotation = Quaternion.Slerp(bulletTrans.rotation, qua, Time.deltaTime * 2.5f);
     }
 
-  
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "DestroyZone")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

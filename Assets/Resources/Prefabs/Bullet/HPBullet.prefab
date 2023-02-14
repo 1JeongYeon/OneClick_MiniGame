@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 2215075705097080620}
   - component: {fileID: 5912352389232544565}
   - component: {fileID: 5354566953499653009}
-  m_Layer: 0
-  m_Name: HpItem
-  m_TagString: Untagged
+  m_Layer: 3
+  m_Name: HPBullet
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
