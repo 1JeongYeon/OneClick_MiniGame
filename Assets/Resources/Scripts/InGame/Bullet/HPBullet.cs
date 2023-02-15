@@ -18,6 +18,10 @@ public class HPBullet : Bullet
 
     public override void Shooting(Transform muzzle, TMPro.TMP_Text effect)
     {
-        base.Shooting(muzzle, effect);
+        float waitTime = (bulletData.delayTime += Time.deltaTime);
+        if (waitTime >= bulletData.delayTime)
+        {
+            base.Shooting(muzzle, effect);
+        }
     }
 }

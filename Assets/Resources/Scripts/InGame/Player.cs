@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
 
     public void PlayerAttack()
     {
-        // 공격 모션 3개로 해서
+        // 공격 모션 3개로 해서, 나중에 플레이어의 위치값에 따라 상 중 하 공격으로 나눌 것임 난이도 높아질수록 플레이어 위치도 위아래로 바꿀것이기 때문
         int randomNum = Random.Range(0, 3);
         
         if (playerChracter.sprite == playerActionData.Stand)

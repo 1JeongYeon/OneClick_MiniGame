@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 398
     width: 263
     height: 533
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 17
+  controlID: 50
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 86
+  controlID: 79
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 103
+  controlID: 80
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -321,8 +321,8 @@ MonoBehaviour:
     y: 0
     width: 434
     height: 931
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -806,20 +806,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: c09affff0aa3ffff40e4ffff407900004a990000
+      m_SelectedIDs: 76930000
+      m_LastClickedID: 37750
+      m_ExpandedIDs: b4bfffff3ac0ffff4ec1ffff16eafffffcf0ffff70f9ffff28fbffff4c83000026860000689300007693000028940000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: HPBullet
-        m_OriginalName: HPBullet
+        m_Name: 'Capsule : Player'
+        m_OriginalName: 'Capsule : Player'
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -23814
+        m_UserData: 37782
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -872,7 +872,8 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders: []
+    m_Folders:
+    - Assets/Resources/Prefabs/Bullet
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -886,7 +887,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 3e620000
     m_LastClickedID: 25150
-    m_ExpandedIDs: 00000000103a0000dc3b00001478000016780000187800001a7800001c7800001e78000020780000227800002478000026780000287800002a7800002c7800002e78000030780000327800003478000036780000
+    m_ExpandedIDs: 00000000866300003a65000060670000626700006467000066670000686700006a6700006c6700006e67000070670000726700007467000076670000786700007a6700007c6700007e6700008067000082670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -914,7 +915,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000103a0000dc3b00001478000016780000187800001a7800001c7800001e78000020780000227800002478000026780000287800002a7800002c7800002e78000030780000327800003478000036780000
+    m_ExpandedIDs: ffffffff00000000866300003a65000060670000626700006467000066670000686700006a6700006c6700006e67000070670000726700007467000076670000786700007a6700007c6700007e6700008067000082670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

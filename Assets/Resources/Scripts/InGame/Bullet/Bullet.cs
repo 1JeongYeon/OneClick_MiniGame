@@ -18,7 +18,8 @@ public abstract class Bullet : MonoBehaviour
 {
     public BulletData bulletData;
 
-    private bool shootAble = false;
+    public bool shootAble = false;
+
     private float delayTime = 0f;
     private Transform playerTrans;
     private Transform bulletTrans;
@@ -39,11 +40,8 @@ public abstract class Bullet : MonoBehaviour
         {
             // 총알을 생성
             var bullet = Instantiate(bulletData.bullet, muzzle.position, Quaternion.identity);
-            // 총알 중력 부여
             bulletRigidBody = bullet.GetComponent<Rigidbody2D>();
-            // 방향
             Vector3 dir = (playerTrans.position - bullet.transform.position).normalized;
-            // 각도
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             Quaternion rotTarget = Quaternion.AngleAxis(-angle, Vector3.forward);
             bullet.transform.rotation = Quaternion.Slerp(bullet.transform.rotation, rotTarget, Time.deltaTime * rotateSpeed);

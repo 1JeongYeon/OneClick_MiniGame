@@ -9,7 +9,7 @@ public class InGameUIManager : MonoBehaviour
 
 
     [SerializeField]
-    public Image[] images_Gauge;
+    private Image[] images_Gauge;
 
 
     // 아직은 체력만 구현하고 추후 게임적 요소 추가할 것.

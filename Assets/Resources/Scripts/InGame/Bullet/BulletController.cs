@@ -34,12 +34,15 @@ public class BulletController : MonoBehaviour
 
         // 총알 생성 함수 실행
         RandomBulletSetting();
+        //currentBullet.Shooting(muzzle, effect);
 
         if (currentBullet.bulletData.maxBullet == 0)
         {
             currentBullet = GetComponent<DefaultBullet>();
         }
     }
+    // 총알이 발사되면 해당 총알의 딜레이시간 후에 다음 총알이 발사되어야 한다.
+    // 총알이 발사된 후 랜덤으로 기본총알 체력회복총알 코인총알 세개중 하나로 getcomponent한다.
 
     private void RandomBulletSetting() 
     {
@@ -50,18 +53,39 @@ public class BulletController : MonoBehaviour
             if (rndIndex <= 5 && rndIndex >= 0)
             {
                 currentBullet = GetComponent<HPBullet>(); // 5퍼센트 확률
-                currentBullet.Shooting(muzzle, effect);
-                return;
             }
-            if (rndIndex <= 25 && rndIndex >= 6)
+            else if (rndIndex <= 25 && rndIndex >= 6)
             {
-                currentBullet = GetComponent<GoldCoinBullet>(); // 25퍼센트 확률
-                currentBullet.Shooting(muzzle, effect);
-                return;
+                currentBullet = GetComponent<GoldCoinBullet>(); // 20퍼센트 확률
             }
-             // 나머지 확률은 기본총알로
+            else
+            {
+                // 나머지 확률은 기본총알로
                 currentBullet = GetComponent<DefaultBullet>();
-                currentBullet.Shooting(muzzle, effect);
+            }
+        }
+        currentBullet.Shooting(muzzle, effect);
+    }
+
+    private void RandomBullet()
+    {
+        if (currentBullet.shootAble == false)
+        {
+            int rndIndex = Random.Range(1,21);
+
+            switch (rndIndex)
+            {
+                case <= 1:
+                    currentBullet = GetComponent<HPBullet>();
+                    break;
+                case <= 4:
+                    currentBullet = GetComponent<GoldCoinBullet>();
+                    break;
+                default:
+                    currentBullet = GetComponent<DefaultBullet>();
+                    break;
+            }
+            currentBullet.Shooting(muzzle, effect);
         }
     }
 }
