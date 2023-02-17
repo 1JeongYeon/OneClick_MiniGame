@@ -14,4 +14,9 @@ public class GameManager : MonoBehaviour
             return gameManager;
         }
     }
+
+    public bool isPlaying;
+    public int score = 0;
+    public int coin = 0;
+    public float playTime = 0f;
 }

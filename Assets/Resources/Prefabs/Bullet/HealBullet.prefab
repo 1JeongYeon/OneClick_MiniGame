@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4654277992537969242}
   - component: {fileID: 2215075705097080620}
   - component: {fileID: 5354566953499653009}
-  - component: {fileID: 4253602813749268756}
+  - component: {fileID: 1694835439363380081}
   m_Layer: 3
   m_Name: HealBullet
   m_TagString: Bullet
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &4654277992537969242
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,7 +107,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!58 &2215075705097080620
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4253602813749268756
+--- !u!114 &1694835439363380081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,3 +157,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 647c5aba8ad31ce4da5a64302db1fab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootAble: 0

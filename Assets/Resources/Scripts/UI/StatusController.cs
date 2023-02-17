@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class StatusController : MonoBehaviour
 {
-    private static StatusController _instance;
+    private static StatusController statusController;
     public static StatusController Instance
     {
         get
         {
-            if (_instance == null)
-                _instance = FindObjectOfType<StatusController>();
-            return _instance;
+            if (statusController == null)
+                statusController = FindObjectOfType<StatusController>();
+            return statusController;
         }
     }
 
@@ -45,7 +45,7 @@ public class StatusController : MonoBehaviour
 
         if (currentHp <= 0)
         {
-            Debug.Log("Game Over");
+            Debug.Log("GAME OVER");
             // UI 작업 필요
         }
     }

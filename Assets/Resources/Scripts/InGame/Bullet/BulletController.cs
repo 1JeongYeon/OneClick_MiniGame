@@ -52,7 +52,7 @@ public class BulletController : MonoBehaviour
         {
             if (rndIndex <= 5 && rndIndex >= 0)
             {
-                currentBullet = GetComponent<HPBullet>(); // 5ÆÛ¼¾Æ® È®·ü
+                currentBullet = GetComponent<HealBullet>(); // 5ÆÛ¼¾Æ® È®·ü
             }
             else if (rndIndex <= 25 && rndIndex >= 6)
             {
@@ -76,7 +76,7 @@ public class BulletController : MonoBehaviour
             switch (rndIndex)
             {
                 case <= 1:
-                    currentBullet = GetComponent<HPBullet>();
+                    currentBullet = GetComponent<HealBullet>();
                     break;
                 case <= 4:
                     currentBullet = GetComponent<GoldCoinBullet>();
