@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private InGameUIManager uIManager;
     private CharacterChoose characterData;
     public PlayerActionData playerActionData;
+    private BulletController bulletController;
 
     // 이로운 총알, 해로운 총알, 아무 상관없는 총알(돈) 3개 들어올 것임
     // bullet 종류에 따라 맞으면 피가 줄어들지 돈을 벌지 체력을 회복할지 결정해야하기 때문에 배열로 받아온다.+
@@ -32,10 +33,9 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-
-        hitBullets = GetComponentsInChildren<Bullet>();
         characterData = FindObjectOfType<CharacterChoose>();
-        uIManager = GetComponent<InGameUIManager>();
+        uIManager = FindObjectOfType<InGameUIManager>();
+        bulletController = GetComponent<BulletController>();
 
         playerAttackCollider.enabled = false;
 
@@ -112,26 +112,30 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
+
             if (other.gameObject.GetComponent<DefaultBullet>())
             {
-                StatusController.Instance.DecreaseHP(other.gameObject.GetComponent<Bullet>().bulletData.damage);
+                // 20이라고 쓰지말고 enter하는 other의 bulletdata.damage를 가져와야함... 가져오는데 계속 0이 떠서 임시로 함...
+                StatusController.Instance.DecreaseHP(20);
                 isHit = true;
-                uIManager.PlayerHitEffect(other);
+                uIManager.PlayerHitEffect(other.gameObject);
             }
             else if (other.gameObject.GetComponent<GoldCoinBullet>())
             {
-                StatusController.Instance.DecreaseHP(other.gameObject.GetComponent<Bullet>().bulletData.damage);
+                // 데미지를 입히지 않음
                 isHit = true;
-                uIManager.PlayerHitEffect(other);
+                uIManager.PlayerHitEffect(other.gameObject);
                 GameManager.Instance.coin += 1;
                 GameManager.Instance.score += 3;
             }
             else if (other.gameObject.GetComponent<HealBullet>())
             {
                 // BulletData에 -로 지정해놓았기에 -를 한번 더 써서 +처리 시킴
-                StatusController.Instance.IncreaseHP(-other.gameObject.GetComponent<Bullet>().bulletData.damage);
+                //StatusController.Instance.IncreaseHP(-other.gameObject.GetComponent<HealBullet>().bulletData.damage);
+                // 위와 동일한 상황  enter하는 other의 bulletdata.damage를 가져와야 함
+                StatusController.Instance.IncreaseHP(30);
                 isHit = true;
-                uIManager.PlayerHitEffect(other);
+                uIManager.PlayerHitEffect(other.gameObject);
                 GameManager.Instance.score += 5;
             }
             Destroy(other.gameObject);

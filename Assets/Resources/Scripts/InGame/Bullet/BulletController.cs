@@ -34,7 +34,7 @@ public class BulletController : MonoBehaviour
 
         // 총알 생성 함수 실행
         RandomBulletSetting();
-        //currentBullet.Shooting(muzzle, effect);
+        currentBullet.Shooting(muzzle, effect);
 
         if (currentBullet.bulletData.maxBullet == 0)
         {
@@ -46,46 +46,19 @@ public class BulletController : MonoBehaviour
 
     private void RandomBulletSetting() 
     {
-        int rndIndex = Random.Range(0, 100);
-
+        bool heal = ChanceMaker.GetThisChanceResult_Percentage(5);
+        bool coin = ChanceMaker.GetThisChanceResult_Percentage(20);
         if (currentBullet != null)
         {
-            if (rndIndex <= 5 && rndIndex >= 0)
+            currentBullet = GetComponent<DefaultBullet>();
+            if (heal)
             {
                 currentBullet = GetComponent<HealBullet>(); // 5퍼센트 확률
             }
-            else if (rndIndex <= 25 && rndIndex >= 6)
+            if (coin)
             {
                 currentBullet = GetComponent<GoldCoinBullet>(); // 20퍼센트 확률
             }
-            else
-            {
-                // 나머지 확률은 기본총알로
-                currentBullet = GetComponent<DefaultBullet>();
-            }
-        }
-        currentBullet.Shooting(muzzle, effect);
-    }
-
-    private void RandomBullet()
-    {
-        if (currentBullet.shootAble == false)
-        {
-            int rndIndex = Random.Range(1,21);
-
-            switch (rndIndex)
-            {
-                case <= 1:
-                    currentBullet = GetComponent<HealBullet>();
-                    break;
-                case <= 4:
-                    currentBullet = GetComponent<GoldCoinBullet>();
-                    break;
-                default:
-                    currentBullet = GetComponent<DefaultBullet>();
-                    break;
-            }
-            currentBullet.Shooting(muzzle, effect);
         }
     }
 }
