@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class DefaultBullet : Bullet
 {
+    public override void Hit()
+    {
+        Player.isHit = true;
+        StatusController.Instance.DecreaseHP(bulletData.damage);
+    }
+
     public override void InitSetting(TMPro.TMP_Text txt)
     {
         bulletData.delayTime = .5f;

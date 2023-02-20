@@ -31,14 +31,7 @@ public class InGameUIManager : MonoBehaviour
     private void Update()
     {
         GaugeUpdate();
-        if (isTimerActivated)
-        {
-            time += Time.deltaTime;
-            textTimes[0].text = ((int)time / 60 % 60).ToString();
-            textTimes[1].text = ((int)time % 60).ToString();
-            textTimes[2].text = string.Format("{0:.00}", (time % 1));
-            textTimes[2].text = textTimes[2].text.Replace(".", "");
-        }
+        TimeSetting();
     }
     private void GaugeUpdate()
     {
@@ -48,6 +41,18 @@ public class InGameUIManager : MonoBehaviour
     private void SetCharacterStatusUI()
     {
         currentCharacterImage.sprite = player.playerActionData.Portrait;
+    }
+
+    private void TimeSetting()
+    {
+        if (isTimerActivated)
+        {
+            time += Time.deltaTime;
+            textTimes[0].text = ((int)time / 60 % 60).ToString();
+            textTimes[1].text = ((int)time % 60).ToString();
+            textTimes[2].text = string.Format("{0:.00}", (time % 1));
+            textTimes[2].text = textTimes[2].text.Replace(".", "");
+        }
     }
 
     public void TimerEvent()
@@ -75,7 +80,7 @@ public class InGameUIManager : MonoBehaviour
     public void PlayerHitEffect(GameObject hittedBullet)
     {
         float waitTime = 0f;
-        if (player.isHit == true)
+        if (Player.isHit == true)
         {
             waitTime += Time.deltaTime;
             if (hittedBullet.gameObject.GetComponent<DefaultBullet>())
@@ -97,7 +102,7 @@ public class InGameUIManager : MonoBehaviour
             if (waitTime >= 0.2f)
             {
                 player.playerChracter.sprite = player.playerActionData.Stand;
-                player.isHit = false;
+                Player.isHit = false;
                 waitTime = 0f;
             }
         }

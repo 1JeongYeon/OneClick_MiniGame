@@ -33,8 +33,11 @@ public class BulletController : MonoBehaviour
         }
 
         // 총알 생성 함수 실행
-        RandomBulletSetting();
-        currentBullet.Shooting(muzzle, effect);
+        if (currentBullet != null)
+        {
+            RandomBulletSetting();
+            currentBullet.Shooting(muzzle, effect);
+        }
 
         if (currentBullet.bulletData.maxBullet == 0)
         {

@@ -16,7 +16,7 @@ public struct BulletData
 
 public abstract class Bullet : MonoBehaviour
 {
-    public BulletData bulletData;
+    public BulletData bulletData = new BulletData();
 
     public bool shootAble = false;
 
@@ -26,7 +26,7 @@ public abstract class Bullet : MonoBehaviour
     private Rigidbody2D bulletRigidBody;
     private float rotateSpeed = 2f;
     private float dis;
-
+    [SerializeField] public TMP_Text inf;
     private void Start()
     {
         delayTime = bulletData.delayTime;
@@ -34,12 +34,15 @@ public abstract class Bullet : MonoBehaviour
     }
     public abstract void InitSetting(TMP_Text info);
 
+    public abstract void Hit();
+
     public virtual void Shooting(Transform muzzle, TMP_Text soundText)
     {
         if (shootAble == true)
         {
             // ÃÑ¾ËÀ» »ý¼º
             var bullet = Instantiate(bulletData.bullet, muzzle.position, Quaternion.identity);
+            InitSetting(inf);
             bulletRigidBody = bullet.GetComponent<Rigidbody2D>();
             Vector3 dir = (playerTrans.position - bullet.transform.position).normalized;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
@@ -102,11 +105,5 @@ public abstract class Bullet : MonoBehaviour
         bulletTrans.rotation = Quaternion.Slerp(bulletTrans.rotation, qua, Time.deltaTime * 2.5f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "DestroyZone")
-        {
-            Destroy(gameObject);
-        }
-    }
+
 }

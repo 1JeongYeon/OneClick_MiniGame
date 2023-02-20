@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Collider2D playerAttackCollider;
 
-    public bool isHit = false;
-    public bool isAttack = false;
+    public static bool isHit = false;
+    public static bool isAttack = false;
 
     [SerializeField]
     private Button playerActionButton;
@@ -25,17 +25,17 @@ public class Player : MonoBehaviour
     private InGameUIManager uIManager;
     private CharacterChoose characterData;
     public PlayerActionData playerActionData;
-    private BulletController bulletController;
+
+    public TMPro.TMP_Text info;
 
     // 이로운 총알, 해로운 총알, 아무 상관없는 총알(돈) 3개 들어올 것임
     // bullet 종류에 따라 맞으면 피가 줄어들지 돈을 벌지 체력을 회복할지 결정해야하기 때문에 배열로 받아온다.+
-    private Bullet[] hitBullets;
+    public Bullet hittedBullet;
 
     private void Start()
     {
         characterData = FindObjectOfType<CharacterChoose>();
         uIManager = FindObjectOfType<InGameUIManager>();
-        bulletController = GetComponent<BulletController>();
 
         playerAttackCollider.enabled = false;
 
@@ -112,11 +112,17 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
-
-            if (other.gameObject.GetComponent<DefaultBullet>())
+            if (other.gameObject.GetComponent<Bullet>())
             {
-                // 20이라고 쓰지말고 enter하는 other의 bulletdata.damage를 가져와야함... 가져오는데 계속 0이 떠서 임시로 함...
+                hittedBullet = other.gameObject.GetComponent<Bullet>();
+                hittedBullet.Hit();
+                uIManager.PlayerHitEffect(other.gameObject);
+                /*// 20이라고 쓰지말고 enter하는 other의 bulletdata.damage를 가져와야함... 가져오는데 계속 0이 떠서 임시로 함...
+
                 StatusController.Instance.DecreaseHP(20);
+                other.gameObject.GetComponent<Bullet>().Hit();
+                Debug.Log(other.gameObject.GetComponent<DefaultBullet>().bulletData.damage); // 0이 나오는데 왜일까
+
                 isHit = true;
                 uIManager.PlayerHitEffect(other.gameObject);
             }
@@ -135,8 +141,7 @@ public class Player : MonoBehaviour
                 // 위와 동일한 상황  enter하는 other의 bulletdata.damage를 가져와야 함
                 StatusController.Instance.IncreaseHP(30);
                 isHit = true;
-                uIManager.PlayerHitEffect(other.gameObject);
-                GameManager.Instance.score += 5;
+                GameManager.Instance.score += 5;*/
             }
             Destroy(other.gameObject);
         }

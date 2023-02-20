@@ -601,6 +601,9 @@ GameObject:
   - component: {fileID: 305558653}
   - component: {fileID: 305558656}
   - component: {fileID: 305558655}
+  - component: {fileID: 305558660}
+  - component: {fileID: 305558659}
+  - component: {fileID: 305558658}
   - component: {fileID: 305558657}
   m_Layer: 6
   m_Name: 'Capsule : Player'
@@ -715,10 +718,10 @@ MonoBehaviour:
   chracterName: 
   playerCollider: {fileID: 305558653}
   playerAttackCollider: {fileID: 1454664601}
-  isHit: 0
-  isAttack: 0
   playerActionButton: {fileID: 1731662363}
   playerActionData: {fileID: 0}
+  info: {fileID: 0}
+  hitBullets: {fileID: 305558658}
 --- !u!222 &305558656
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -748,6 +751,45 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &305558658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305558650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd43738b3d28f7141baab8dd3c7c16ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootAble: 0
+--- !u!114 &305558659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305558650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0b6168a666afe439c3fb42be87fb4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootAble: 0
+--- !u!114 &305558660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305558650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647c5aba8ad31ce4da5a64302db1fab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootAble: 0
 --- !u!1 &334557677
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit

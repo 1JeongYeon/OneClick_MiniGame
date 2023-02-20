@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class GoldCoinBullet : Bullet
 {
+    public override void Hit()
+    {
+        Player.isHit = true;
+        GameManager.Instance.coin += 1;
+        GameManager.Instance.score += 3;
+    }
+
     public override void InitSetting(TMPro.TMP_Text txt)
     {
         bulletData.delayTime = 0.5f;

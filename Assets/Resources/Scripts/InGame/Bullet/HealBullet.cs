@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class HealBullet : Bullet
 {
+    public override void Hit()
+    {
+        Player.isHit = true;
+        StatusController.Instance.IncreaseHP(-30);
+        GameManager.Instance.score += 5;
+    }
+
     public override void InitSetting(TMPro.TMP_Text txt)
     {
         bulletData.delayTime = 1f;
