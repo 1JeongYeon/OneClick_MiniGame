@@ -14,7 +14,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Collider2D playerCollider;
     [SerializeField]
-    private Collider2D playerAttackCollider;
+    private GameObject playerAttack;
+    [SerializeField]
+    private AudioSource playerHitAudio;
 
     public static bool isHit = false;
     public static bool isAttack = false;
@@ -30,14 +32,17 @@ public class Player : MonoBehaviour
 
     // 이로운 총알, 해로운 총알, 아무 상관없는 총알(돈) 3개 들어올 것임
     // bullet 종류에 따라 맞으면 피가 줄어들지 돈을 벌지 체력을 회복할지 결정해야하기 때문에 배열로 받아온다.+
-    public Bullet hittedBullet;
+    private Bullet hittedBullet;
+    private Bullet lastHittedBullet;
+    private BulletController bulletController;
 
     private void Start()
     {
+        bulletController = FindObjectOfType<BulletController>();
         characterData = FindObjectOfType<CharacterChoose>();
         uIManager = FindObjectOfType<InGameUIManager>();
 
-        playerAttackCollider.enabled = false;
+        playerAttack.SetActive(false);
 
         characterIndex = characterData.characterIndex;
         chracterName = characterData.characterName;
@@ -49,6 +54,12 @@ public class Player : MonoBehaviour
         {
             PlayerAttack();
         });
+    }
+
+    private void BulletSetting()
+    {
+        hittedBullet = bulletController.currentBullet;
+        hittedBullet.InitSetting(info);
     }
 
     private void Update()
@@ -76,7 +87,7 @@ public class Player : MonoBehaviour
     private void PlayerActionReturn()
     {
         playerChracter.sprite = playerActionData.Stand;
-        playerAttackCollider.enabled = false;
+        playerAttack.SetActive(false);
         isAttack = false;
     }
 
@@ -90,21 +101,17 @@ public class Player : MonoBehaviour
             if (randomNum == 0)
             {
                 playerChracter.sprite = playerActionData.Attack0;
-                isAttack = true;
-                playerAttackCollider.enabled = true;
             }
             else if (randomNum == 1)
             {
                 playerChracter.sprite = playerActionData.Attack1;
-                playerAttackCollider.enabled = true;
-                isAttack = true;
             }
             else if (randomNum == 2)
             {
                 playerChracter.sprite = playerActionData.Attack2;
-                playerAttackCollider.enabled = true;
-                isAttack = true;
             }
+            isAttack = true;
+            playerAttack.SetActive(true);
         }
     }
 
@@ -114,34 +121,10 @@ public class Player : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Bullet>())
             {
-                hittedBullet = other.gameObject.GetComponent<Bullet>();
+                BulletSetting();
                 hittedBullet.Hit();
                 uIManager.PlayerHitEffect(other.gameObject);
-                /*// 20이라고 쓰지말고 enter하는 other의 bulletdata.damage를 가져와야함... 가져오는데 계속 0이 떠서 임시로 함...
-
-                StatusController.Instance.DecreaseHP(20);
-                other.gameObject.GetComponent<Bullet>().Hit();
-                Debug.Log(other.gameObject.GetComponent<DefaultBullet>().bulletData.damage); // 0이 나오는데 왜일까
-
-                isHit = true;
-                uIManager.PlayerHitEffect(other.gameObject);
-            }
-            else if (other.gameObject.GetComponent<GoldCoinBullet>())
-            {
-                // 데미지를 입히지 않음
-                isHit = true;
-                uIManager.PlayerHitEffect(other.gameObject);
-                GameManager.Instance.coin += 1;
-                GameManager.Instance.score += 3;
-            }
-            else if (other.gameObject.GetComponent<HealBullet>())
-            {
-                // BulletData에 -로 지정해놓았기에 -를 한번 더 써서 +처리 시킴
-                //StatusController.Instance.IncreaseHP(-other.gameObject.GetComponent<HealBullet>().bulletData.damage);
-                // 위와 동일한 상황  enter하는 other의 bulletdata.damage를 가져와야 함
-                StatusController.Instance.IncreaseHP(30);
-                isHit = true;
-                GameManager.Instance.score += 5;*/
+                playerHitAudio.gameObject.SetActive(true);
             }
             Destroy(other.gameObject);
         }

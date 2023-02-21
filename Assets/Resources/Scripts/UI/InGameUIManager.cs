@@ -32,6 +32,10 @@ public class InGameUIManager : MonoBehaviour
     {
         GaugeUpdate();
         TimeSetting();
+        if (scoreText.text != GameManager.Instance.score.ToString())
+        {
+            scoreText.text = GameManager.Instance.score.ToString();
+        }
     }
     private void GaugeUpdate()
     {

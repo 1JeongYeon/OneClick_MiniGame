@@ -5,8 +5,8 @@ using TMPro;
 public struct BulletData
 {
     public float delayTime;
-    public int maxBullet;
-    public int fixedMaxBullet;
+    /*public int maxBullet;
+    public int fixedMaxBullet;*/
     public string information;
     public string soundEffect;
     public int damage;
@@ -35,6 +35,7 @@ public abstract class Bullet : MonoBehaviour
     public abstract void InitSetting(TMP_Text info);
 
     public abstract void Hit();
+    public abstract void Crushed();
 
     public virtual void Shooting(Transform muzzle, TMP_Text soundText)
     {
@@ -55,11 +56,11 @@ public abstract class Bullet : MonoBehaviour
 
             fireEffect.transform.position = muzzle.position + new Vector3(0, 3f, 0);
             fireEffect.text = bulletData.soundEffect;
-            Destroy(fireEffect.gameObject, .25f);
+            Destroy(fireEffect.gameObject, .2f);
             shootAble = false;
 
             // 총알 최대치가 중요한지 고민 해야 함. 라운드를 시간으로 할지 아니면 총 총알의 갯수를 다 소진했을 때 종료할지 고민 ㄱㄱ
-            bulletData.maxBullet--;
+            //bulletData.maxBullet--;
         }
 
         if (shootAble == false)

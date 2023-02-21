@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class DefaultBullet : Bullet
 {
+    public override void Crushed()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void Hit()
     {
         Player.isHit = true;
@@ -15,8 +20,8 @@ public class DefaultBullet : Bullet
         bulletData.delayTime = .5f;
         bulletData.information = "ÇöÀç ÃÑ¾Ë : ±âº» ÃÑ¾Ë";
         bulletData.soundEffect = "BANG!";
-        bulletData.maxBullet = -1;
-        bulletData.fixedMaxBullet = -2;
+       /* bulletData.maxBullet = -1;
+        bulletData.fixedMaxBullet = -2;*/
         bulletData.damage = 20;
         bulletData.bulletSpeed = 10f;
         bulletData.bullet = Resources.Load<GameObject>("Prefabs/Bullet/DefaultBullet");

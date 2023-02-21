@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class HealBullet : Bullet
 {
+    public override void Crushed()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void Hit()
     {
         Player.isHit = true;
@@ -16,8 +21,8 @@ public class HealBullet : Bullet
         bulletData.delayTime = 1f;
         bulletData.information = "현재 총알 : 체력회복총알";
         bulletData.soundEffect = "Yummy";
-        bulletData.maxBullet = 3;
-        bulletData.fixedMaxBullet = 3;
+       /* bulletData.maxBullet = 3;
+        bulletData.fixedMaxBullet = 3;*/
         bulletData.damage = -30; // 체력 회복 위함
         bulletData.bulletSpeed = 20f;
         bulletData.bullet = Resources.Load<GameObject>("Prefabs/Bullet/HealBullet");
