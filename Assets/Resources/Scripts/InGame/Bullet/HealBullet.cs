@@ -12,7 +12,7 @@ public class HealBullet : Bullet
     public override void Hit()
     {
         Player.isHit = true;
-        StatusController.Instance.IncreaseHP(-30);
+        StatusController.Instance.IncreaseHP(bulletData.damage);
         GameManager.Instance.score += 5;
     }
 
@@ -23,7 +23,7 @@ public class HealBullet : Bullet
         bulletData.soundEffect = "Yummy";
        /* bulletData.maxBullet = 3;
         bulletData.fixedMaxBullet = 3;*/
-        bulletData.damage = -30; // 체력 회복 위함
+        bulletData.damage = 30; // 체력 회복 위함
         bulletData.bulletSpeed = 20f;
         bulletData.bullet = Resources.Load<GameObject>("Prefabs/Bullet/HealBullet");
     }

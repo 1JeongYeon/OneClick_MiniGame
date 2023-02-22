@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class PlayerAttackRange : MonoBehaviour
 {
-    [SerializeField] GameObject attackEffect;
+    [SerializeField] GameObject attackEffectPrefab;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision != null)
         {
-            
             if (collision.gameObject.GetComponent<DefaultBullet>())
             {
-                attackEffect.transform.position = collision.transform.position;
-                attackEffect.SetActive(true);
+                var attackEffect = Instantiate(attackEffectPrefab, collision.transform.position, Quaternion.identity);
                 GameManager.Instance.score++;
+                Destroy(attackEffect, .2f);
             }
             Destroy(collision.gameObject);
         }
