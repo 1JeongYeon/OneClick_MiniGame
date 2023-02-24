@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 // È®·ü °ÔÀÓ On
 public static class ChanceMaker
@@ -41,6 +42,25 @@ public static class ChanceMaker
             Success = true;
         }
         return Success;
+    }
+
+    public static int GetRandom(int[] seed)
+    {
+        int randSum = seed.Sum(); // ÃÑ·®
+        int rand = Random.Range(0, randSum + 1);
+        int sum = 0;
+        int returnIndex = 0;
+        for (int i = 0; i < seed.Length; i++)
+        {
+            sum += seed[i];
+            if (sum >= rand)
+            {
+                returnIndex = i;
+                break;
+            }
+        }
+        Debug.Log($"{rand}, {returnIndex}, {randSum}");
+        return returnIndex;
     }
 }
 

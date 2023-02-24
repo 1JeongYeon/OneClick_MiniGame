@@ -11,7 +11,6 @@ public struct BulletData
     public string soundEffect;
     public int damage;
     public float bulletSpeed;
-    public GameObject bullet;
 }
 
 public abstract class Bullet : MonoBehaviour
@@ -20,61 +19,52 @@ public abstract class Bullet : MonoBehaviour
 
     public bool shootAble = false;
 
-    private float delayTime = 0f;
     private Transform playerTrans;
     private Transform bulletTrans;
     private Rigidbody2D bulletRigidBody;
     private float rotateSpeed = 2f;
     private float dis;
-    [SerializeField] public TMP_Text inf;
-    private void Start()
+
+    public virtual void InitSetting()
     {
-        delayTime = bulletData.delayTime;
+        bulletRigidBody = GetComponent<Rigidbody2D>();
         playerTrans = FindObjectOfType<Player>().transform;
     }
-    public abstract void InitSetting(TMP_Text info);
 
     public abstract void Hit();
     public abstract void Crushed();
 
-    public virtual void Shooting(Transform muzzle, TMP_Text soundText)
+    public virtual void Shooting()
     {
         if (shootAble == true)
         {
-            // 총알을 생성
-            var bullet = Instantiate(bulletData.bullet, muzzle.position, Quaternion.identity);
-            InitSetting(inf);
-            bulletRigidBody = bullet.GetComponent<Rigidbody2D>();
-            Vector3 dir = (playerTrans.position - bullet.transform.position).normalized;
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Quaternion rotTarget = Quaternion.AngleAxis(-angle, Vector3.forward);
-            bullet.transform.rotation = Quaternion.Slerp(bullet.transform.rotation, rotTarget, Time.deltaTime * rotateSpeed);
-            bulletRigidBody.velocity = new Vector2(dir.x * bulletData.bulletSpeed, dir.y * bulletData.bulletSpeed); 
+            //InitSetting();
+            // 총알 방향 설정
             
-
-            var fireEffect = Instantiate(soundText);
+            
+            /*var fireEffect = Instantiate(soundText);
 
             fireEffect.transform.position = muzzle.position + new Vector3(0, 3f, 0);
             fireEffect.text = bulletData.soundEffect;
-            Destroy(fireEffect.gameObject, .2f);
+            Destroy(fireEffect.gameObject, .2f);*/
             shootAble = false;
-
-            // 총알 최대치가 중요한지 고민 해야 함. 라운드를 시간으로 할지 아니면 총 총알의 갯수를 다 소진했을 때 종료할지 고민 ㄱㄱ
-            //bulletData.maxBullet--;
-        }
-
-        if (shootAble == false)
-        {
-            delayTime += Time.deltaTime;
-            if (delayTime >= bulletData.delayTime)
-            {
-                shootAble = true;
-                delayTime = 0f;
-            }
         }
     }
 
-    
+    private void Update()
+    {
+        MoveBullet();
+    }
+
+    private void MoveBullet()
+    {
+        Vector3 dir = (playerTrans.position - transform.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Quaternion rotTarget = Quaternion.AngleAxis(-angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotTarget, Time.deltaTime * rotateSpeed);
+        bulletRigidBody.velocity = new Vector2(dir.x * bulletData.bulletSpeed, dir.y * bulletData.bulletSpeed);
+    }
+
     // 스테이지 높아질 때 난이도를 주기 위해 총알 움직임에 변수를 넣을 코드 아직 안쓸것이다.
     private void DiffusionMissileMoveOperation(Bullet _bullet)
     {

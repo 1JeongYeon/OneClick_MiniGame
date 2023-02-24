@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GoldCoinBullet : Bullet
 {
+    private void Start()
+    {
+        InitSetting();
+        Shooting();
+    }
     public override void Crushed()
     {
         throw new System.NotImplementedException();
@@ -16,8 +21,9 @@ public class GoldCoinBullet : Bullet
         GameManager.Instance.score += 3;
     }
 
-    public override void InitSetting(TMPro.TMP_Text txt)
+    public override void InitSetting()
     {
+        base.InitSetting();
         bulletData.delayTime = 0.5f;
         bulletData.information = "ÇöÀç ÃÑ¾Ë : °ñµåÄÚÀÎÃÑ¾Ë";
         bulletData.soundEffect = "Bling Bling~";
@@ -25,15 +31,14 @@ public class GoldCoinBullet : Bullet
         bulletData.fixedMaxBullet = 30;*/
         bulletData.damage = 0; // µ· ¸Ô°í µ¥¹ÌÁö ´Þ¸é ¼­·¯¿ì´Ï±î 
         bulletData.bulletSpeed = 15f;
-        bulletData.bullet = Resources.Load<GameObject>("Prefabs/Bullet/GoldCoinBullet");
     }
 
-    public override void Shooting(Transform muzzle, TMPro.TMP_Text effect)
+    public override void Shooting()
     {
         float waitTime = (bulletData.delayTime += Time.deltaTime);
         if (waitTime >= bulletData.delayTime)
         {
-            base.Shooting(muzzle, effect);
+            base.Shooting();
         }
     }
 }

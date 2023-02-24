@@ -56,13 +56,7 @@ public class Player : MonoBehaviour
         });
     }
 
-    private void BulletSetting()
-    {
-        hittedBullet = bulletController.currentBullet;
-        lastHittedBullet = bulletController.lastBullet;
-        lastHittedBullet = hittedBullet;
-        hittedBullet.InitSetting(info);
-    }
+    
 
     private void Update()
     {
@@ -117,24 +111,22 @@ public class Player : MonoBehaviour
             playerAttack.SetActive(true);
         }
     }
-
+    private void BulletSetting()
+    {
+        /*hittedBullet = bulletController.currentBullet;
+        lastHittedBullet = bulletController.lastBullet;
+        lastHittedBullet = hittedBullet;
+        hittedBullet.InitSetting();*/
+    }
     private void OnTriggerEnter2D(Collider2D other) // 데미지가 다르게 들어옴 쏜 총알이랑 맞은 총알이랑 같아야하는데 다르게 가져오는것 같음
     {
         if (other.gameObject.tag == "Bullet")
         {
             if (other.gameObject.GetComponent<Bullet>())
             {
-                if (lastHittedBullet != hittedBullet)
-                {
-                    lastHittedBullet = hittedBullet;
-                    hittedBullet.InitSetting(info);
-                }
-                BulletSetting();
-                /*if (other.gameObject.GetComponent<Bullet>().bulletData.bullet != hittedBullet.bulletData.bullet)
-                {
-                    hittedBullet = other.GetComponent<Bullet>();
-                }*/
-                hittedBullet.Hit();
+                //   BulletSetting();
+
+                other.gameObject.GetComponent<Bullet>().Hit();
                 uIManager.PlayerHitEffect(other.gameObject);
                 if (other.gameObject.GetComponent<DefaultBullet>())
                 {

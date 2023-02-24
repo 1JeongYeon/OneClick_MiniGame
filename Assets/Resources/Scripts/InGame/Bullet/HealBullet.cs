@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class HealBullet : Bullet
 {
+    private void Start()
+    {
+        InitSetting();
+        Shooting();
+    }
     public override void Crushed()
     {
         throw new System.NotImplementedException();
@@ -16,24 +21,24 @@ public class HealBullet : Bullet
         GameManager.Instance.score += 5;
     }
 
-    public override void InitSetting(TMPro.TMP_Text txt)
+    public override void InitSetting()
     {
+        base.InitSetting();
         bulletData.delayTime = 1f;
         bulletData.information = "현재 총알 : 체력회복총알";
         bulletData.soundEffect = "Yummy";
        /* bulletData.maxBullet = 3;
-        bulletData.fixedMaxBullet = 3;*/
         bulletData.damage = 30; // 체력 회복 위함
+        bulletData.fixedMaxBullet = 3;*/
         bulletData.bulletSpeed = 20f;
-        bulletData.bullet = Resources.Load<GameObject>("Prefabs/Bullet/HealBullet");
     }
 
-    public override void Shooting(Transform muzzle, TMPro.TMP_Text effect)
+    public override void Shooting()
     {
         float waitTime = (bulletData.delayTime += Time.deltaTime);
         if (waitTime >= bulletData.delayTime)
         {
-            base.Shooting(muzzle, effect);
+            base.Shooting();
         }
     }
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class DefaultBullet : Bullet
 {
+    private void Start()
+    {
+        InitSetting();
+        Shooting();
+    }
     public override void Crushed()
     {
         throw new System.NotImplementedException();
@@ -15,8 +20,9 @@ public class DefaultBullet : Bullet
         StatusController.Instance.DecreaseHP(bulletData.damage);
     }
 
-    public override void InitSetting(TMPro.TMP_Text txt)
+    public override void InitSetting()
     {
+        base.InitSetting();
         bulletData.delayTime = .5f;
         bulletData.information = "ÇöÀç ÃÑ¾Ë : ±âº» ÃÑ¾Ë";
         bulletData.soundEffect = "BANG!";
@@ -24,15 +30,14 @@ public class DefaultBullet : Bullet
         bulletData.fixedMaxBullet = -2;*/
         bulletData.damage = 20;
         bulletData.bulletSpeed = 10f;
-        bulletData.bullet = Resources.Load<GameObject>("Prefabs/Bullet/DefaultBullet");
     }
 
-    public override void Shooting(Transform muzzle, TMPro.TMP_Text effect)
+    public override void Shooting()
     {
         float waitTime = (bulletData.delayTime += Time.deltaTime);
         if (waitTime >= bulletData.delayTime)
         {
-            base.Shooting(muzzle, effect);
+            base.Shooting();
         }
     }
 }

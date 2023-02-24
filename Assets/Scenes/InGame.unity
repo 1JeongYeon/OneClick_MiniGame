@@ -134,9 +134,6 @@ GameObject:
   - component: {fileID: 92453507}
   - component: {fileID: 92453508}
   - component: {fileID: 92453510}
-  - component: {fileID: 92453509}
-  - component: {fileID: 92453512}
-  - component: {fileID: 92453511}
   m_Layer: 0
   m_Name: 'Cannon : Shooting!'
   m_TagString: Untagged
@@ -212,20 +209,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &92453509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92453506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd43738b3d28f7141baab8dd3c7c16ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootAble: 0
-  inf: {fileID: 0}
 --- !u!114 &92453510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,43 +221,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34742afb28664164e8cdd530bc6730d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentBullet: {fileID: 92453509}
+  currentBullet: {fileID: 0}
   lastBullet: {fileID: 0}
   bullets:
   - {fileID: 5311052188669820367, guid: aa77f0365cd315347972c13c6fbdbf7c, type: 3}
   - {fileID: 5432227832954308138, guid: ec205dd5bba7db44db980e2b4b6d5bc9, type: 3}
-  - {fileID: 5912352389232544565, guid: 5140328d16381ee49b0defc0df522fef, type: 3}
+  - {fileID: 1694835439363380081, guid: 5140328d16381ee49b0defc0df522fef, type: 3}
   muzzle: {fileID: 686392528}
   effect: {fileID: 203842302891285158, guid: b757050f5eaf6d745be9ed05826d76f1, type: 3}
-  info: {fileID: 0}
---- !u!114 &92453511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92453506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 647c5aba8ad31ce4da5a64302db1fab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootAble: 0
-  inf: {fileID: 0}
---- !u!114 &92453512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92453506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a0b6168a666afe439c3fb42be87fb4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shootAble: 0
-  inf: {fileID: 0}
 --- !u!1 &168677346
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
