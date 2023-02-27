@@ -22,16 +22,18 @@ public class SceneController : MonoBehaviour
 
     void Start()
     {
-        LoadSceneActive();
+        LoadSceneActive(sceneName);
     }
 
-    public void LoadSceneActive()
+    public void LoadSceneActive(string _sceneName)
     {
-        StartCoroutine(LoadCoroutine());
+        _sceneName = sceneName;
+        StartCoroutine(LoadCoroutine(sceneName));
     }
 
-    IEnumerator LoadCoroutine()
+    IEnumerator LoadCoroutine(string _Scenename)
     {
+        sceneName = _Scenename;
         operation = SceneManager.LoadSceneAsync(sceneName);
         operation.allowSceneActivation = false;
 

@@ -36,7 +36,7 @@ public class CharacterChoose : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         SceneController.Instance.OpenScene("InGame");
     }
-
+    
     void Start()
     {
         CharacterPose();

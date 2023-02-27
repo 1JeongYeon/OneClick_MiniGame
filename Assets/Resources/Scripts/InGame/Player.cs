@@ -28,17 +28,9 @@ public class Player : MonoBehaviour
     private CharacterChoose characterData;
     public PlayerActionData playerActionData;
 
-    public TMPro.TMP_Text info;
-
-    // 이로운 총알, 해로운 총알, 아무 상관없는 총알(돈) 3개 들어올 것임
-    // bullet 종류에 따라 맞으면 피가 줄어들지 돈을 벌지 체력을 회복할지 결정해야하기 때문에 배열로 받아온다.+
-    private Bullet hittedBullet;
-    private Bullet lastHittedBullet;
-    private BulletController bulletController;
 
     private void Start()
     {
-        bulletController = FindObjectOfType<BulletController>();
         characterData = FindObjectOfType<CharacterChoose>();
         uIManager = FindObjectOfType<InGameUIManager>();
 
@@ -76,7 +68,7 @@ public class Player : MonoBehaviour
         {
             if (isAttack == true)
             {
-                Invoke("PlayerActionReturn", .2f);
+                Invoke("PlayerActionReturn", .1f);
             }
         }
     }
@@ -111,23 +103,16 @@ public class Player : MonoBehaviour
             playerAttack.SetActive(true);
         }
     }
-    private void BulletSetting()
-    {
-        /*hittedBullet = bulletController.currentBullet;
-        lastHittedBullet = bulletController.lastBullet;
-        lastHittedBullet = hittedBullet;
-        hittedBullet.InitSetting();*/
-    }
-    private void OnTriggerEnter2D(Collider2D other) // 데미지가 다르게 들어옴 쏜 총알이랑 맞은 총알이랑 같아야하는데 다르게 가져오는것 같음
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Bullet")
         {
             if (other.gameObject.GetComponent<Bullet>())
             {
-                //   BulletSetting();
-
                 other.gameObject.GetComponent<Bullet>().Hit();
                 uIManager.PlayerHitEffect(other.gameObject);
+
                 if (other.gameObject.GetComponent<DefaultBullet>())
                 {
                     playerHitAudio.Play();

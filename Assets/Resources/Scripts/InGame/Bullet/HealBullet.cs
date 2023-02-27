@@ -27,9 +27,10 @@ public class HealBullet : Bullet
         bulletData.delayTime = 1f;
         bulletData.information = "현재 총알 : 체력회복총알";
         bulletData.soundEffect = "Yummy";
-       /* bulletData.maxBullet = 3;
+        /* bulletData.maxBullet = 3;
+
+         bulletData.fixedMaxBullet = 3;*/
         bulletData.damage = 30; // 체력 회복 위함
-        bulletData.fixedMaxBullet = 3;*/
         bulletData.bulletSpeed = 20f;
     }
 

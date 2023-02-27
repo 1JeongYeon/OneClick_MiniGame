@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-// 확률 게임 On
+// 확률 시스템 On
 public static class ChanceMaker
 {
     public static bool GetThisChanceResult(float Chance)
@@ -59,7 +59,7 @@ public static class ChanceMaker
                 break;
             }
         }
-        Debug.Log($"{rand}, {returnIndex}, {randSum}");
+        //Debug.Log($"{rand}, {returnIndex}, {randSum}");
         return returnIndex;
     }
 }
@@ -76,9 +76,19 @@ public class GameManager : MonoBehaviour
             return gameManager;
         }
     }
+    public static bool isPause = false; // 일시 정지 메뉴 창 활성화
 
     public bool isPlaying;
     public int score = 0;
     public int coin = 0;
     public float playTime = 0f;
+
+
+    void Update()
+    {
+        if (isPause)
+        {
+
+        }
+    }
 }

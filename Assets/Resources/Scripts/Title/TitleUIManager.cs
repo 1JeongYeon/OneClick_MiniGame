@@ -8,6 +8,7 @@ public class TitleUIManager : MonoBehaviour
     [SerializeField] private Button gameStart;
     [SerializeField] private Button gameQuit;
 
+    
     private void Start()
     {
         gameStart.onClick.AddListener(() =>

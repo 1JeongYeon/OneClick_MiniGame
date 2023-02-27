@@ -34,19 +34,11 @@ public abstract class Bullet : MonoBehaviour
     public abstract void Hit();
     public abstract void Crushed();
 
+    // 삭제하고 다른 기능을 넣을 예정
     public virtual void Shooting()
     {
         if (shootAble == true)
         {
-            //InitSetting();
-            // 총알 방향 설정
-            
-            
-            /*var fireEffect = Instantiate(soundText);
-
-            fireEffect.transform.position = muzzle.position + new Vector3(0, 3f, 0);
-            fireEffect.text = bulletData.soundEffect;
-            Destroy(fireEffect.gameObject, .2f);*/
             shootAble = false;
         }
     }
