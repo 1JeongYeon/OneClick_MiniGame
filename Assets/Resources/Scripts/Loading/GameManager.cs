@@ -78,17 +78,17 @@ public class GameManager : MonoBehaviour
     }
     public static bool isPause = false; // 일시 정지 메뉴 창 활성화
 
-    public bool isPlaying;
+    public bool isAlive = true;
     public int score = 0;
     public int coin = 0;
-    public float playTime = 0f;
+    public int[] playTimes = { 0, 0, 0 }; // 분,초,밀리초
 
 
     void Update()
     {
-        if (isPause)
+        if (playTimes[1] == 10) // 작업중~
         {
-
+            PlayMusicOperator.Instance.PlayBGM("stage2");
         }
     }
 }

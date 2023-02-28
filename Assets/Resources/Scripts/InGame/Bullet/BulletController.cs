@@ -21,7 +21,6 @@ public class BulletController : MonoBehaviour
         if (delay >= 0.5f)
         {
             RandomBulletSetting();
-            
             delay = 0f;
         }
     }

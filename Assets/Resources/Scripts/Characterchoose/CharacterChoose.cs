@@ -12,6 +12,8 @@ public class CharacterChoose : MonoBehaviour
 
     [SerializeField] private Button goButton;
 
+    
+
     public void Left()
     {
         characterIndex = ((0 == characterIndex) ? characters.Length : characterIndex) - 1;
@@ -41,5 +43,6 @@ public class CharacterChoose : MonoBehaviour
     {
         CharacterPose();
         characterName = characters[characterIndex].GetComponent<PlayerActionData>().Name;
+        PlayMusicOperator.Instance.PlayBGM("character_choose");
     }
 }

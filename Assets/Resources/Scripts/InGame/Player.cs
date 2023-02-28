@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
         playerActionData = characterData.characters[characterIndex].GetComponent<PlayerActionData>();
         playerChracter.sprite = playerActionData.Stand;
 
+        GameManager.Instance.isAlive = true;
         playerActionButton.onClick.AddListener(() =>
         {
             PlayerAttack();
@@ -104,6 +105,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    // 총알에 맞았을 때 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Bullet")

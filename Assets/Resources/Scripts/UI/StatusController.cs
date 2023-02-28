@@ -46,9 +46,12 @@ public class StatusController : MonoBehaviour
         if (currentHp <= 0)
         {
             Debug.Log("GAME OVER");
-            // UI 작업 필요
+            PlayerDie();
         }
     }
-    
 
+    private void PlayerDie()
+    {
+        GameManager.Instance.isAlive = false;
+    }
 }

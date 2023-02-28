@@ -26,6 +26,7 @@ public class InGameUIManager : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         SetCharacterStatusUI();
+        PlayMusicOperator.Instance.PlayBGM("stage1");
     }
 
     private void Update()
@@ -51,11 +52,16 @@ public class InGameUIManager : MonoBehaviour
     {
         if (isTimerActivated)
         {
+            GameManager.Instance.isAlive = true;
             time += Time.deltaTime;
             textTimes[0].text = ((int)time / 60 % 60).ToString();
             textTimes[1].text = ((int)time % 60).ToString();
             textTimes[2].text = string.Format("{0:.00}", (time % 1));
             textTimes[2].text = textTimes[2].text.Replace(".", "");
+        }
+        for (int i = 0; i < textTimes.Length; i++)
+        {
+            GameManager.Instance.playTimes[i] = int.Parse(textTimes[i].text);
         }
     }
 
@@ -83,10 +89,8 @@ public class InGameUIManager : MonoBehaviour
 
     public void PlayerHitEffect(GameObject hittedBullet)
     {
-        float waitTime = 0f;
         if (Player.isHit == true)
         {
-            waitTime += Time.deltaTime;
             if (hittedBullet.gameObject.GetComponent<DefaultBullet>())
             {
                 currentCharacterImage.sprite = player.playerActionData.PortraitLose; // 맞아서 아파하는 모습
@@ -102,13 +106,13 @@ public class InGameUIManager : MonoBehaviour
                 currentCharacterImage.sprite = player.playerActionData.Win; // 이미지 교체해야함
                 scoreText.text = GameManager.Instance.score.ToString();
             }
-
-            if (waitTime >= 0.2f)
-            {
-                player.playerChracter.sprite = player.playerActionData.Stand;
-                Player.isHit = false;
-                waitTime = 0f;
-            }
+            Invoke("PlayerHitEffectRefresh", .2f);
         }
+    }
+
+    private void PlayerHitEffectRefresh()
+    {
+        currentCharacterImage.sprite = player.playerActionData.Portrait;
+        Player.isHit = false;
     }
 }

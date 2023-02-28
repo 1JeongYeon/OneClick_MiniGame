@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pause : MonoBehaviour
+public class Pause : MonoBehaviour // GameOver 역할도 줌
 {
     [SerializeField] private GameObject pauseUI; // 일시 정지 UI 패널
+    [SerializeField] private GameObject gameOverUI;
 
     void Update()
     {
@@ -19,6 +20,20 @@ public class Pause : MonoBehaviour
                 ClosePause();
             }
         }
+
+        if (GameManager.Instance.isAlive == false)
+        {
+            CallGameOver();
+        }
+    }
+
+    public void CallGameOver()
+    {
+        GameManager.isPause = true;
+        gameOverUI.SetActive(true);
+        Time.timeScale = 0f;
+        var objM = FindObjectOfType<PlayMusicOperator>();
+        Destroy(objM.gameObject);
     }
 
     public void CallPause()
@@ -45,7 +60,6 @@ public class Pause : MonoBehaviour
         Application.Quit();  // 게임 종료 (에디터 상 실행이기 때문에 종료 눌러도 변화 X)
     }
 
-
     public void GoToMainScene()
     {
         GameManager.isPause = false;
@@ -54,5 +68,6 @@ public class Pause : MonoBehaviour
         // DontDestotyOnLoad 중복방지
         var obj = FindObjectOfType<CharacterChoose>();
         Destroy(obj.gameObject);
+        //PlayMusicOperator.Instance.PlayBGM("title");
     }
 }
