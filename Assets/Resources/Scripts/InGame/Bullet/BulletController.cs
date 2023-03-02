@@ -12,25 +12,36 @@ public class BulletController : MonoBehaviour
 
     [SerializeField] protected Transform muzzle;
     public TMP_Text effect;
-    private float delay;
+    private float time = 0f;
+    private float delay = 0.5f;
 
+    private void Start()
+    {
+    }
     void Update()
     {
         // 총알 생성 함수 실행
-        delay += Time.deltaTime;
-        if (delay >= 0.5f)
+        time += Time.deltaTime;
+        if (time >= delay)
         {
             RandomBulletSetting();
-            delay = 0f;
+
+            time = 0f;
         }
     }
 
     private void RandomBulletSetting() 
     {
         int index = ChanceMaker.GetRandom(new int[] { 140, 50, 10}); // default, coin, heal 가중치
-
-        currentBullet = bullets[index]; 
+        currentBullet = bullets[index];
+        
+        
         //Bullet 생성
         Instantiate(currentBullet, muzzle.position, Quaternion.identity);
+        delay = 0.5f;
+    }
+
+    private  void BulletDifficultyAdjustment()
+    {
     }
 }

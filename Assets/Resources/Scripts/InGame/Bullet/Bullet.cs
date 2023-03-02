@@ -29,6 +29,8 @@ public abstract class Bullet : MonoBehaviour
     {
         bulletRigidBody = GetComponent<Rigidbody2D>();
         playerTrans = FindObjectOfType<Player>().transform;
+
+        StartCoroutine("BulletDifficultyAdjustment");
     }
 
     public abstract void Hit();
@@ -45,16 +47,35 @@ public abstract class Bullet : MonoBehaviour
 
     private void Update()
     {
-        MoveBullet();
+        if (gameObject != null)
+        {
+            MoveBullet();
+        }
     }
 
     private void MoveBullet()
     {
+
         Vector3 dir = (playerTrans.position - transform.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion rotTarget = Quaternion.AngleAxis(-angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotTarget, Time.deltaTime * rotateSpeed);
+
         bulletRigidBody.velocity = new Vector2(dir.x * bulletData.bulletSpeed, dir.y * bulletData.bulletSpeed);
+    }
+
+    IEnumerator BulletDifficultyAdjustment() // 상당히 여러번 호출되는 어려움이 있다.
+    {
+        if (GameManager.Instance.playTimes[1] % 10 == 0 && GameManager.Instance.playTimes[1] > 0 && (GameManager.Instance.playTimes[1] / 10) < 2)
+        {
+            bulletData.delayTime += Random.Range(-.1f, .5f);
+            bulletData.bulletSpeed += 5f;
+
+            Debug.Log(bulletData.bulletSpeed);
+            Debug.Log(bulletData.delayTime);
+            Debug.Log("난이도 상승!~");
+            yield return null;
+        }
     }
 
     // 스테이지 높아질 때 난이도를 주기 위해 총알 움직임에 변수를 넣을 코드 아직 안쓸것이다.
