@@ -82,13 +82,21 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int coin = 0;
     public int[] playTimes = { 0, 0, 0 }; // 분,초,밀리초
+    public int stageLevel = 1; 
 
-
+    Bullet bullet;
     void Update()
     {
         if (playTimes[1] == 10) // 작업중~
         {
             PlayMusicOperator.Instance.PlayBGM("stage2");
+            StageLevelSetting();
         }
+    }
+
+    IEnumerator StageLevelSetting()
+    {
+        stageLevel++;
+        yield return new WaitForSeconds(10f);
     }
 }

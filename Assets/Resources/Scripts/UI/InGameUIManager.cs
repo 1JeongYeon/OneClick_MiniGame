@@ -11,6 +11,7 @@ public class InGameUIManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
 
     [SerializeField] private Image[] images_Gauge;
+    [SerializeField] private Image losePose;
 
     private Player player;
 
@@ -27,6 +28,7 @@ public class InGameUIManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         SetCharacterStatusUI();
         PlayMusicOperator.Instance.PlayBGM("stage1");
+        losePose.sprite = player.playerActionData.Lose;
     }
 
     private void Update()

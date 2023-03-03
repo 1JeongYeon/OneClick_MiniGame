@@ -5,8 +5,6 @@ using TMPro;
 public struct BulletData
 {
     public float delayTime;
-    /*public int maxBullet;
-    public int fixedMaxBullet;*/
     public string information;
     public string soundEffect;
     public int damage;
@@ -30,12 +28,13 @@ public abstract class Bullet : MonoBehaviour
         bulletRigidBody = GetComponent<Rigidbody2D>();
         playerTrans = FindObjectOfType<Player>().transform;
 
-        StartCoroutine("BulletDifficultyAdjustment");
+        //StartCoroutine("BulletDifficultyAdjustment");
     }
 
     public abstract void Hit();
     public abstract void Crushed();
 
+    public abstract void BulletDifficultyAdjustment();
     // 삭제하고 다른 기능을 넣을 예정
     public virtual void Shooting()
     {
@@ -64,7 +63,7 @@ public abstract class Bullet : MonoBehaviour
         bulletRigidBody.velocity = new Vector2(dir.x * bulletData.bulletSpeed, dir.y * bulletData.bulletSpeed);
     }
 
-    IEnumerator BulletDifficultyAdjustment() // 상당히 여러번 호출되는 어려움이 있다.
+    /*IEnumerator BulletDifficultyAdjustment() // 상당히 여러번 호출되는 어려움이 있다.
     {
         if (GameManager.Instance.playTimes[1] % 10 == 0 && GameManager.Instance.playTimes[1] > 0 && (GameManager.Instance.playTimes[1] / 10) < 2)
         {
@@ -76,7 +75,7 @@ public abstract class Bullet : MonoBehaviour
             Debug.Log("난이도 상승!~");
             yield return null;
         }
-    }
+    }*/
 
     // 스테이지 높아질 때 난이도를 주기 위해 총알 움직임에 변수를 넣을 코드 아직 안쓸것이다.
     private void DiffusionMissileMoveOperation(Bullet _bullet)

@@ -25,11 +25,9 @@ public class DefaultBullet : Bullet
         base.InitSetting();
         bulletData.delayTime = .5f;
         bulletData.information = "ÇöÀç ÃÑ¾Ë : ±âº» ÃÑ¾Ë";
-        bulletData.soundEffect = "BANG!";
-       /* bulletData.maxBullet = -1;
-        bulletData.fixedMaxBullet = -2;*/
         bulletData.damage = 20;
         bulletData.bulletSpeed = 10f;
+        BulletDifficultyAdjustment();
     }
 
     public override void Shooting()
@@ -38,6 +36,15 @@ public class DefaultBullet : Bullet
         if (waitTime >= bulletData.delayTime)
         {
             base.Shooting();
+        }
+    }
+
+    public override void BulletDifficultyAdjustment()
+    {
+        if (GameManager.Instance.playTimes[1] >= 10)
+        {
+            bulletData.bulletSpeed += Random.Range(2 , 5);
+            Debug.Log(bulletData.bulletSpeed + "deflaut");
         }
     }
 }

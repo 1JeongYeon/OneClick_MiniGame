@@ -26,11 +26,9 @@ public class GoldCoinBullet : Bullet
         base.InitSetting();
         bulletData.delayTime = 0.5f;
         bulletData.information = "ÇöÀç ÃÑ¾Ë : °ñµåÄÚÀÎÃÑ¾Ë";
-        bulletData.soundEffect = "Bling Bling~";
-       /* bulletData.maxBullet = 30;
-        bulletData.fixedMaxBullet = 30;*/
         bulletData.damage = 0; // µ· ¸Ô°í µ¥¹ÌÁö ´Þ¸é ¼­·¯¿ì´Ï±î 
         bulletData.bulletSpeed = 15f;
+        BulletDifficultyAdjustment();
     }
 
     public override void Shooting()
@@ -39,6 +37,15 @@ public class GoldCoinBullet : Bullet
         if (waitTime >= bulletData.delayTime)
         {
             base.Shooting();
+        }
+    }
+
+    public override void BulletDifficultyAdjustment()
+    {
+        if (GameManager.Instance.playTimes[1] >= 10)
+        {
+            bulletData.bulletSpeed += Random.Range(-5, 5);
+            Debug.Log(bulletData.bulletSpeed + "coin");
         }
     }
 }

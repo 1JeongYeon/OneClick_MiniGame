@@ -16,6 +16,11 @@ public class PlayerAttackRange : MonoBehaviour
                 GameManager.Instance.score++;
                 Destroy(attackEffect, .2f);
             }
+            else if (collision.gameObject.GetComponent<GoldCoinBullet>() || collision.gameObject.GetComponent<HealBullet>())
+            {
+                StatusController.Instance.DecreaseHP(10);
+                Debug.Log("패널티 적용 -10 HP");
+            }
             Destroy(collision.gameObject);
         }
     }

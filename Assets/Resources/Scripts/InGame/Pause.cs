@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour // GameOver 역할도 줌
     [SerializeField] private GameObject pauseUI; // 일시 정지 UI 패널
     [SerializeField] private GameObject gameOverUI;
 
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))

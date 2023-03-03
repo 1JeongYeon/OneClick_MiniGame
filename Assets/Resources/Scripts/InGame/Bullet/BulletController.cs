@@ -15,18 +15,17 @@ public class BulletController : MonoBehaviour
     private float time = 0f;
     private float delay = 0.5f;
 
-    private void Start()
-    {
-    }
     void Update()
     {
         // 총알 생성 함수 실행
         time += Time.deltaTime;
         if (time >= delay)
         {
-            RandomBulletSetting();
-
+            delay = 0.5f; // delay 초기화
+            DelayDifficultyAdjustment(); // delay 난이도 설정
+            RandomBulletSetting(); // 랜덤 총알 생성
             time = 0f;
+            Debug.Log(delay);
         }
     }
 
@@ -34,14 +33,15 @@ public class BulletController : MonoBehaviour
     {
         int index = ChanceMaker.GetRandom(new int[] { 140, 50, 10}); // default, coin, heal 가중치
         currentBullet = bullets[index];
-        
-        
         //Bullet 생성
         Instantiate(currentBullet, muzzle.position, Quaternion.identity);
-        delay = 0.5f;
     }
 
-    private  void BulletDifficultyAdjustment()
+    private void DelayDifficultyAdjustment()
     {
+        if (GameManager.Instance.playTimes[1] >= 10)
+        {
+            delay += Random.Range(-0.3f, 0.3f);
+        }
     }
 }

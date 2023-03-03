@@ -26,12 +26,9 @@ public class HealBullet : Bullet
         base.InitSetting();
         bulletData.delayTime = 1f;
         bulletData.information = "현재 총알 : 체력회복총알";
-        bulletData.soundEffect = "Yummy";
-        /* bulletData.maxBullet = 3;
-
-         bulletData.fixedMaxBullet = 3;*/
         bulletData.damage = 30; // 체력 회복 위함
         bulletData.bulletSpeed = 20f;
+        BulletDifficultyAdjustment();
     }
 
     public override void Shooting()
@@ -40,6 +37,15 @@ public class HealBullet : Bullet
         if (waitTime >= bulletData.delayTime)
         {
             base.Shooting();
+        }
+    }
+
+    public override void BulletDifficultyAdjustment()
+    {
+        if (GameManager.Instance.playTimes[1] >= 10)
+        {
+            bulletData.bulletSpeed += Random.Range(-5, 5);
+            Debug.Log(bulletData.bulletSpeed + "heal");
         }
     }
 }
