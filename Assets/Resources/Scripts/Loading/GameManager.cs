@@ -85,18 +85,21 @@ public class GameManager : MonoBehaviour
     public int stageLevel = 1; 
 
     Bullet bullet;
-    void Update()
+    void FixedUpdate()
     {
-        if (playTimes[1] == 10) // 작업중~
+        if (playTimes[1] == 10 ) // 작업중~
         {
             PlayMusicOperator.Instance.PlayBGM("stage2");
-            StageLevelSetting();
+            InvokeRepeating("StageLevelSetting", 0f, 3f); // 0초후 처음 호출하고 3초마다 호출 // 순간 너무 많이 호출되어 버림 한번만 시작해야하는데 그러면 start에서 시작한느게 바람직함 그럴라면 gamemanager에서 벗어나야함 딜레마에 빠짐 ㅠ
         }
     }
 
-    IEnumerator StageLevelSetting()
+    private void StageLevelSetting()
     {
+        if (playTimes[1] > 10)
+        {
+            return;
+        }
         stageLevel++;
-        yield return new WaitForSeconds(10f);
     }
 }

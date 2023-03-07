@@ -31,7 +31,7 @@ public class InGameUIManager : MonoBehaviour
         losePose.sprite = player.playerActionData.Lose;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         GaugeUpdate();
         TimeSetting();
