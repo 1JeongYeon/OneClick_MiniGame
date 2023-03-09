@@ -77,29 +77,28 @@ public class GameManager : MonoBehaviour
         }
     }
     public static bool isPause = false; // 일시 정지 메뉴 창 활성화
-
+    
     public bool isAlive = true;
     public int score = 0;
     public int coin = 0;
     public int[] playTimes = { 0, 0, 0 }; // 분,초,밀리초
-    public int stageLevel = 1; 
+    public int stageLevel = 1; // static이 나아보임 나중에 정리하면서 수정 예정
 
-    Bullet bullet;
+    private DifficultyAdjustment difficulty;
+
     void FixedUpdate()
     {
-        if (playTimes[1] == 10 ) // 작업중~
+        if (playTimes[1] == 10 ) // 작업중~ // 지정 시간마다 껏다 켰다 해주면서 레벨을 올리면 되겠다.
         {
             PlayMusicOperator.Instance.PlayBGM("stage2");
-            InvokeRepeating("StageLevelSetting", 0f, 3f); // 0초후 처음 호출하고 3초마다 호출 // 순간 너무 많이 호출되어 버림 한번만 시작해야하는데 그러면 start에서 시작한느게 바람직함 그럴라면 gamemanager에서 벗어나야함 딜레마에 빠짐 ㅠ
+            difficulty = FindObjectOfType<DifficultyAdjustment>();
+            difficulty.gameObject.SetActive(true);
+            if (difficulty.enabled)
+            {
+                return;
+            }
         }
     }
 
-    private void StageLevelSetting()
-    {
-        if (playTimes[1] > 10)
-        {
-            return;
-        }
-        stageLevel++;
-    }
+    
 }

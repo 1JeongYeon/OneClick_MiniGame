@@ -44,7 +44,7 @@ public class DefaultBullet : Bullet
         if (GameManager.Instance.playTimes[1] >= 10)
         {
             bulletData.bulletSpeed += Random.Range(2 , 5);
-            Debug.Log(bulletData.bulletSpeed + "deflaut");
+            Debug.Log(bulletData.bulletSpeed + "speed deflaut");
         }
     }
 }

@@ -45,7 +45,7 @@ public class HealBullet : Bullet
         if (GameManager.Instance.playTimes[1] >= 10)
         {
             bulletData.bulletSpeed += Random.Range(-5, 5);
-            Debug.Log(bulletData.bulletSpeed + "heal");
+            Debug.Log(bulletData.bulletSpeed + "speed heal");
         }
     }
 }
