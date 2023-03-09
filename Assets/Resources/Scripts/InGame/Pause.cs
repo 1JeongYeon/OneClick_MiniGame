@@ -35,6 +35,7 @@ public class Pause : MonoBehaviour // GameOver ¿ªÇÒµµ ÁÜ
         Time.timeScale = 0f;
         var objM = FindObjectOfType<PlayMusicOperator>();
         Destroy(objM.gameObject);
+        GameManager.Instance.isAlive = true;
     }
 
     public void CallPause()

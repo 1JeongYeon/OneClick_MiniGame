@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int coin = 0;
     public int[] playTimes = { 0, 0, 0 }; // 분,초,밀리초
-    public int stageLevel = 1; // static이 나아보임 나중에 정리하면서 수정 예정
+    public int stageLevel = 0; // static이 나아보임 나중에 정리하면서 수정 예정
 
     private DifficultyAdjustment difficulty;
 
@@ -91,12 +91,6 @@ public class GameManager : MonoBehaviour
         if (playTimes[1] == 10 ) // 작업중~ // 지정 시간마다 껏다 켰다 해주면서 레벨을 올리면 되겠다.
         {
             PlayMusicOperator.Instance.PlayBGM("stage2");
-            difficulty = FindObjectOfType<DifficultyAdjustment>();
-            difficulty.gameObject.SetActive(true);
-            if (difficulty.enabled)
-            {
-                return;
-            }
         }
     }
 

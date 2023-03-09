@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class DifficultyAdjustment : MonoBehaviour
 {
-    // 구조 다시 짜야함
+    // 구조 다시 짜야할듯...
     private void Start()
     {
-        if (GameManager.Instance.playTimes[1] <= 10)
-        {
-            gameObject.SetActive(false);
-        }
-        if (GameManager.Instance.playTimes[1] >= 10)
-        {
-            InvokeRepeating("LevelSetting", 0f, 5f);
-        }
+        InvokeRepeating("LevelSetting", 0f, 10f);
     }
 
     private void LevelSetting()
     {
+        
          GameManager.Instance.stageLevel++;
-         Debug.Log("Level UP");
+        if (GameManager.Instance.stageLevel >= 4)
+        {
+            GameManager.Instance.stageLevel = 4;
+        }
+        Debug.Log("Level UP");
          Debug.Log(GameManager.Instance.stageLevel);
     }
 }
