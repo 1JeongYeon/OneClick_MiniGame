@@ -44,7 +44,7 @@ public class BulletController : MonoBehaviour
         
         if (GameManager.Instance.playTimes[1] >= 10)
         {
-            delay += GameManager.Instance.stageLevel * Random.Range(-0.2f, 0.2f); // level은 지정한 초마다 올라간다.
+            delay += GameManager.Instance.stageLevel * Random.Range(-0.15f, 0.1f); // level은 지정한 초마다 올라간다.
         }
     }
 }

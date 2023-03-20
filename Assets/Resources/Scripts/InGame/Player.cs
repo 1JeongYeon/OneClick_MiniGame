@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         {
             if (isAttack == true)
             {
-                Invoke("PlayerActionReturn", .1f);
+                Invoke("PlayerActionReturn", .15f);
             }
         }
     }
