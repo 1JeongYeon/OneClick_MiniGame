@@ -33,6 +33,7 @@ public class PlayMusicOperator : MonoBehaviour
         BGM.loop = true;
         if (BGMList.Length > 0)
         {
+            // 시작음악 설정
             PlayBGM(BGMList[9].bgmName);
         }
 
@@ -55,5 +56,15 @@ public class PlayMusicOperator : MonoBehaviour
                 NowBGMname = name;
             }
         }
+    }
+
+    public void PauseBGM()
+    {
+        BGM.Pause();
+    }
+
+    public void UnPauseBGM()
+    {
+        BGM.UnPause();
     }
 }

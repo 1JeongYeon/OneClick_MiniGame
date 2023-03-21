@@ -64,20 +64,6 @@ public abstract class Bullet : MonoBehaviour
         bulletRigidBody.velocity = new Vector2(dir.x * bulletData.bulletSpeed * (GameManager.Instance.stageLevel * 0.5f), dir.y * bulletData.bulletSpeed * (GameManager.Instance.stageLevel * 0.5f));
     }
 
-    /*IEnumerator BulletDifficultyAdjustment() // 상당히 여러번 호출되는 어려움이 있다.
-    {
-        if (GameManager.Instance.playTimes[1] % 10 == 0 && GameManager.Instance.playTimes[1] > 0 && (GameManager.Instance.playTimes[1] / 10) < 2)
-        {
-            bulletData.delayTime += Random.Range(-.1f, .5f);
-            bulletData.bulletSpeed += 5f;
-
-            Debug.Log(bulletData.bulletSpeed);
-            Debug.Log(bulletData.delayTime);
-            Debug.Log("난이도 상승!~");
-            yield return null;
-        }
-    }*/
-
     // 스테이지 높아질 때 난이도를 주기 위해 총알 움직임에 변수를 넣을 코드 아직 안쓸것이다.
     private void DiffusionMissileMoveOperation(Bullet _bullet)
     {

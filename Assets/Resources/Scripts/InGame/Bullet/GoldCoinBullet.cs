@@ -45,7 +45,6 @@ public class GoldCoinBullet : Bullet
         if (GameManager.Instance.playTimes[1] >= 10)
         {
             bulletData.bulletSpeed += Random.Range(-5, 5);
-            Debug.Log(bulletData.bulletSpeed + "speed coin");
         }
     }
 }

@@ -26,7 +26,6 @@ public class BulletController : MonoBehaviour
             DelayDifficultyAdjustment(); // delay 난이도 설정
             RandomBulletSetting(); // 랜덤 총알 생성
             time = 0f;
-            Debug.Log(delay);
         }
     }
 

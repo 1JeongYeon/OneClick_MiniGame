@@ -70,6 +70,8 @@ public class Pause : MonoBehaviour // GameOver 역할도 줌
         // DontDestotyOnLoad 중복방지
         var obj = FindObjectOfType<CharacterChoose>();
         Destroy(obj.gameObject);
+        var musicObj = FindObjectOfType<PlayMusicOperator>();
+        Destroy(musicObj.gameObject);
         GameManager.Instance.isAlive = true;
         //PlayMusicOperator.Instance.PlayBGM("title");
     }
