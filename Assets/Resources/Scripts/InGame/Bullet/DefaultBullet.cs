@@ -41,7 +41,7 @@ public class DefaultBullet : Bullet
 
     public override void BulletDifficultyAdjustment()
     {
-        if (GameManager.Instance.playTimes[1] >= 10)
+        if (GameManager.Instance.stageLevel >= 2)
         {
             bulletData.bulletSpeed += Random.Range(2 , 5);
         }

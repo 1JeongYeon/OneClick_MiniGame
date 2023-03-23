@@ -31,7 +31,6 @@ public class BulletController : MonoBehaviour
 
     private void RandomBulletSetting() 
     {
-        
         int index = ChanceMaker.GetRandom(new int[] { 140, 50, 10}); // default, coin, heal 가중치
         currentBullet = bullets[index];
         //Bullet 생성
@@ -40,8 +39,7 @@ public class BulletController : MonoBehaviour
 
     private void DelayDifficultyAdjustment()
     {
-        
-        if (GameManager.Instance.playTimes[1] >= 10)
+        if (GameManager.Instance.stageLevel >= 2)
         {
             delay += GameManager.Instance.stageLevel * Random.Range(-0.15f, 0.1f); // level은 지정한 초마다 올라간다.
         }

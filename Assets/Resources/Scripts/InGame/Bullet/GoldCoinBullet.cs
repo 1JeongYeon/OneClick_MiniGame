@@ -42,7 +42,7 @@ public class GoldCoinBullet : Bullet
 
     public override void BulletDifficultyAdjustment()
     {
-        if (GameManager.Instance.playTimes[1] >= 10)
+        if (GameManager.Instance.stageLevel >= 2)
         {
             bulletData.bulletSpeed += Random.Range(-5, 5);
         }

@@ -57,6 +57,10 @@ public class PlayMusicOperator : MonoBehaviour
             }
         }
     }
+    public void StopBGM()
+    {
+        BGM.Stop();
+    }
 
     public void PauseBGM()
     {

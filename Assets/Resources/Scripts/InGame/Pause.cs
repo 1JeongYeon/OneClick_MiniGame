@@ -33,8 +33,7 @@ public class Pause : MonoBehaviour // GameOver ¿ªÇÒµµ ÁÜ
         GameManager.isPause = true;
         gameOverUI.SetActive(true);
         Time.timeScale = 0f;
-        var objM = FindObjectOfType<PlayMusicOperator>();
-        Destroy(objM.gameObject);
+        PlayMusicOperator.Instance.StopBGM();
         GameManager.Instance.isAlive = true;
     }
 
