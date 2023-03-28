@@ -82,9 +82,9 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int coin = 0;
     public int[] playTimes = { 0, 0, 0 }; // 분,초,밀리초
-    public int stageLevel = 0; // static이 나아보임 나중에 정리하면서 수정 예정
+    public int stageLevel = 0; 
 
-    private DifficultyAdjustment difficulty;
+    public List<int> highScore = new List<int>();
 
     void FixedUpdate()
     {

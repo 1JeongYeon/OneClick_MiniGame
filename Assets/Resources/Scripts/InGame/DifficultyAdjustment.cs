@@ -19,6 +19,6 @@ public class DifficultyAdjustment : MonoBehaviour
             GameManager.Instance.stageLevel = 4;
         }
         Debug.Log("Level UP");
-        Debug.Log(GameManager.Instance.stageLevel);
+        Debug.Log(GameManager.Instance.stageLevel + " 현재 레벨");
     }
 }
