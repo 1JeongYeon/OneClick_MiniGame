@@ -8,11 +8,6 @@ public class Pause : MonoBehaviour // GameOver 역할도 줌
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private TMPro.TMP_Text scoreTxt;
 
-    private Rank rank;
-    private void Start()
-    {
-        rank = FindObjectOfType<Rank>();
-    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
@@ -40,6 +35,11 @@ public class Pause : MonoBehaviour // GameOver 역할도 줌
         Time.timeScale = 0f;
         scoreTxt.text = GameManager.Instance.score.ToString();
         PlayMusicOperator.Instance.StopBGM();
+
+        // 죽었을 때에만 점수 저장, Coin 저장
+        PlayerPrefs.SetInt("CurrentScore", GameManager.Instance.score);
+        PlayerPrefs.SetInt("SavedHighScoreCount", GameManager.Instance.highScore.Count);
+        PlayerPrefs.SetInt("Coin", GameManager.Instance.coin);
         GameManager.Instance.isAlive = true;
     }
 
@@ -72,18 +72,13 @@ public class Pause : MonoBehaviour // GameOver 역할도 줌
     {
         GameManager.isPause = false;
         Time.timeScale = 1f;
-        // 점수 저장
-        PlayerPrefs.SetInt("CurrentScore", GameManager.Instance.score);
-        rank.ScoreFrameGenerate(GameManager.Instance.score);
         GameManager.Instance.score = 0;
-
-        SceneController.Instance.OpenScene("Title");
         // DontDestotyOnLoad 중복방지
         var obj = FindObjectOfType<CharacterChoose>();
         Destroy(obj.gameObject);
         var musicObj = FindObjectOfType<PlayMusicOperator>();
         Destroy(musicObj.gameObject);
+        SceneController.Instance.OpenScene("Title");
         GameManager.Instance.isAlive = true;
-        //PlayMusicOperator.Instance.PlayBGM("title");
     }
 }

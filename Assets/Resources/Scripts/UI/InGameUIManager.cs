@@ -29,6 +29,7 @@ public class InGameUIManager : MonoBehaviour
         SetCharacterStatusUI();
         PlayMusicOperator.Instance.PlayBGM("stage1");
         losePose.sprite = player.playerActionData.Lose;
+        coinText.text = GameManager.Instance.coin.ToString();
     }
 
     private void FixedUpdate()

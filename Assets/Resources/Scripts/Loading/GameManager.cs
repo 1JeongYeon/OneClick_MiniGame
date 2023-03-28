@@ -59,7 +59,6 @@ public static class ChanceMaker
                 break;
             }
         }
-        //Debug.Log($"{rand}, {returnIndex}, {randSum}");
         return returnIndex;
     }
 }
@@ -86,6 +85,10 @@ public class GameManager : MonoBehaviour
 
     public List<int> highScore = new List<int>();
 
+    private void Start()
+    {
+        coin = PlayerPrefs.GetInt("Coin");
+    }
     void FixedUpdate()
     {
         if (playTimes[1] == 10 ) // 작업중~ // 지정 시간마다 껏다 켰다 해주면서 레벨을 올리면 되겠다.
@@ -93,6 +96,4 @@ public class GameManager : MonoBehaviour
             PlayMusicOperator.Instance.PlayBGM("stage2");
         }
     }
-
-    
 }
