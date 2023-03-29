@@ -27,7 +27,7 @@ public class InGameUIManager : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         SetCharacterStatusUI();
-        PlayMusicOperator.Instance.PlayBGM("stage1");
+       // PlayMusicOperator.Instance.PlayBGM("stage1");
         losePose.sprite = player.playerActionData.Lose;
         coinText.text = GameManager.Instance.coin.ToString();
     }
@@ -53,6 +53,7 @@ public class InGameUIManager : MonoBehaviour
 
     private void TimeSetting()
     {
+        // 인게임과 게임매니저에 현 플레이 타임 정보 전달
         if (isTimerActivated)
         {
             GameManager.Instance.isAlive = true;
@@ -92,6 +93,7 @@ public class InGameUIManager : MonoBehaviour
 
     public void PlayerHitEffect(GameObject hittedBullet)
     {
+        // 현 캐릭 체력이 닳을 때 체력바 프레임 안 캐릭터의 모션 변화
         if (Player.isHit == true)
         {
             if (hittedBullet.gameObject.GetComponent<DefaultBullet>())

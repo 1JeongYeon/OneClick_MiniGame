@@ -9,10 +9,10 @@ public class Mute : MonoBehaviour
     private bool isMute = false;
     private void Start()
     {
-        muteBtn.image.color = Color.blue;
+        muteBtn.image.color = Color.blue; // 재생 상태
         muteBtn.onClick.AddListener(() =>
         { 
-            isMute = !isMute;
+            isMute = !isMute; // 누를때마다 true면 false가 되고 false면 true가 됨
 
             if (isMute == false)
             {

@@ -7,11 +7,6 @@ public class DefaultBullet : Bullet
     private void Start()
     {
         InitSetting();
-        Shooting();
-    }
-    public override void Crushed()
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void Hit()
@@ -28,15 +23,6 @@ public class DefaultBullet : Bullet
         bulletData.damage = 20;
         bulletData.bulletSpeed = 10f;
         BulletDifficultyAdjustment();
-    }
-
-    public override void Shooting()
-    {
-        float waitTime = (bulletData.delayTime += Time.deltaTime);
-        if (waitTime >= bulletData.delayTime)
-        {
-            base.Shooting();
-        }
     }
 
     public override void BulletDifficultyAdjustment()

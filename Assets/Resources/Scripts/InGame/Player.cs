@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         if (IsInvoking() == false)
         {
             if (isAttack == true)
-            {
+            {   // 0.1초동안 공격 모션
                 Invoke("PlayerActionReturn", .1f);
             }
         }
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
 
     public void PlayerAttack()
     {
-        // 공격 모션 3개로 해서, 나중에 플레이어의 위치값에 따라 상 중 하 공격으로 나눌 것임 난이도 높아질수록 플레이어 위치도 위아래로 바꿀것이기 때문
+        // 공격 모션 3개로 랜덤으로 나오게 함
         int randomNum = Random.Range(0, 3);
         
         if (playerChracter.sprite == playerActionData.Stand)
@@ -112,11 +112,13 @@ public class Player : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Bullet>())
             {
+                // 디자인패턴으로 나누어진 bullet의 고유 기능 호출
                 other.gameObject.GetComponent<Bullet>().Hit();
+
                 uIManager.PlayerHitEffect(other.gameObject);
 
                 if (other.gameObject.GetComponent<DefaultBullet>())
-                {
+                {   // 기본총알에 맞으면 맞는 소리 재생
                     playerHitAudio.Play();
                 }
             }

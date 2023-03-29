@@ -11,11 +11,12 @@ public class Rank : MonoBehaviour
     public int highScoreCount = 0;
     private void Start()
     {
+        // 총량을 정해준다.
         GameManager.Instance.highScore.Capacity = rankFrames.Length;
+        // +1을 해주는 이유는 기능 실행전 count의 수는 1 적기 때문
         highScoreCount = PlayerPrefs.GetInt("SavedHighScoreCount") + 1;
-        Debug.Log(highScoreCount);
         for (int i = 0; i < highScoreCount; i++)
-        {
+        {   // 랭크 불러오기
              GameManager.Instance.highScore.Add(PlayerPrefs.GetInt(i + "SavedHighScore"));
         }
         GameManager.Instance.highScore = GameManager.Instance.highScore.Distinct().ToList();

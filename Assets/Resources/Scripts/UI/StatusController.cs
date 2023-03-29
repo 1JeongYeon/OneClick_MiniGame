@@ -45,7 +45,7 @@ public class StatusController : MonoBehaviour
 
         if (currentHp <= 0)
         {
-            Debug.Log("GAME OVER");
+            // gameover
             PlayerDie();
         }
     }

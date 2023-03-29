@@ -7,11 +7,6 @@ public class GoldCoinBullet : Bullet
     private void Start()
     {
         InitSetting();
-        Shooting();
-    }
-    public override void Crushed()
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void Hit()
@@ -29,15 +24,6 @@ public class GoldCoinBullet : Bullet
         bulletData.damage = 0; // 돈 먹고 데미지 달면 서러우니까 
         bulletData.bulletSpeed = 15f;
         BulletDifficultyAdjustment();
-    }
-
-    public override void Shooting()
-    {
-        float waitTime = (bulletData.delayTime += Time.deltaTime);
-        if (waitTime >= bulletData.delayTime)
-        {
-            base.Shooting();
-        }
     }
 
     public override void BulletDifficultyAdjustment()

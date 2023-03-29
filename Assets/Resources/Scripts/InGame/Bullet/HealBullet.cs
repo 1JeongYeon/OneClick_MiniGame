@@ -7,11 +7,6 @@ public class HealBullet : Bullet
     private void Start()
     {
         InitSetting();
-        Shooting();
-    }
-    public override void Crushed()
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void Hit()
@@ -29,15 +24,6 @@ public class HealBullet : Bullet
         bulletData.damage = 30; // 체력 회복 위함
         bulletData.bulletSpeed = 20f;
         BulletDifficultyAdjustment();
-    }
-
-    public override void Shooting()
-    {
-        float waitTime = (bulletData.delayTime += Time.deltaTime);
-        if (waitTime >= bulletData.delayTime)
-        {
-            base.Shooting();
-        }
     }
 
     public override void BulletDifficultyAdjustment()

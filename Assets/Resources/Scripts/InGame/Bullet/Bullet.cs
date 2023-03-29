@@ -15,8 +15,6 @@ public abstract class Bullet : MonoBehaviour
 {
     public BulletData bulletData = new BulletData();
 
-    public bool shootAble = false;
-
     private Transform playerTrans;
     private Transform bulletTrans;
     private Rigidbody2D bulletRigidBody;
@@ -27,22 +25,12 @@ public abstract class Bullet : MonoBehaviour
     {
         bulletRigidBody = GetComponent<Rigidbody2D>();
         playerTrans = FindObjectOfType<Player>().transform;
-
-        //StartCoroutine("BulletDifficultyAdjustment");
     }
 
     public abstract void Hit();
-    public abstract void Crushed();
 
     public abstract void BulletDifficultyAdjustment();
-    // 삭제하고 다른 기능을 넣을 예정
-    public virtual void Shooting()
-    {
-        if (shootAble == true)
-        {
-            shootAble = false;
-        }
-    }
+    
 
     private void Update()
     {
@@ -54,7 +42,6 @@ public abstract class Bullet : MonoBehaviour
 
     private void MoveBullet()
     {
-
         Vector3 dir = (playerTrans.position - transform.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         Quaternion rotTarget = Quaternion.AngleAxis(-angle, Vector3.forward);
@@ -64,7 +51,7 @@ public abstract class Bullet : MonoBehaviour
         bulletRigidBody.velocity = new Vector2(dir.x * bulletData.bulletSpeed * (GameManager.Instance.stageLevel * 0.5f), dir.y * bulletData.bulletSpeed * (GameManager.Instance.stageLevel * 0.5f));
     }
 
-    // 스테이지 높아질 때 난이도를 주기 위해 총알 움직임에 변수를 넣을 코드 아직 안쓸것이다.
+    // 스테이지 높아질 때 난이도를 주기 위해 총알 움직임에 변수를 넣을 코드 추후 사용 예정
     private void DiffusionMissileMoveOperation(Bullet _bullet)
     {
         Debug.Log(" 유도탄 ");
@@ -94,6 +81,4 @@ public abstract class Bullet : MonoBehaviour
         Quaternion qua = Quaternion.LookRotation(directionV3);
         bulletTrans.rotation = Quaternion.Slerp(bulletTrans.rotation, qua, Time.deltaTime * 2.5f);
     }
-
-
 }
