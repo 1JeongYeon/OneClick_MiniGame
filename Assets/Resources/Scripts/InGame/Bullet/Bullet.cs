@@ -48,7 +48,8 @@ public abstract class Bullet : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, rotTarget, Time.deltaTime * rotateSpeed);
 
         // level을 곱해 지정한 시간마다 속도를 증가시킨다. (level은 지정한 시간마다 1씩 증가하기 때문 허나 너무 빨라지진 않게 절반만 곱한다.)
-        bulletRigidBody.velocity = new Vector2(dir.x * bulletData.bulletSpeed * (GameManager.Instance.stageLevel * 0.5f), dir.y * bulletData.bulletSpeed * (GameManager.Instance.stageLevel * 0.5f));
+        bulletRigidBody.velocity = new Vector2(dir.x * bulletData.bulletSpeed * (GameManager.Instance.stageLevel * 0.5f), 
+            dir.y * bulletData.bulletSpeed * (GameManager.Instance.stageLevel * 0.5f));
     }
 
     // 스테이지 높아질 때 난이도를 주기 위해 총알 움직임에 변수를 넣을 코드 추후 사용 예정

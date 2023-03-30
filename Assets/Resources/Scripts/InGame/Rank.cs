@@ -33,14 +33,16 @@ public class Rank : MonoBehaviour
         GameManager.Instance.highScore.Reverse(); // 내림차순으로 정렬
         if (GameManager.Instance.highScore.Count >= rankFrames.Length)
         {
-            // rankFrames.Length 가 총 11개이다 11번째 rankFrame은 데이터 임시 보관용으로 gameObject.SetActive = false, 젤 점수 낮은건 11번째로 들어가고 삭제되게 함.
+            // rankFrames.Length 가 총 11개이다 11번째 rankFrame은 데이터 임시 보관용으로
+            // gameObject.SetActive = false, 젤 점수 낮은건 11번째로 들어가고 삭제되게 함.
             GameManager.Instance.highScore.RemoveAt(10);
         }
         // 11개중 10개만 활성화 비활성화 한다.
         for (int i = 0; i < rankFrames.Length - 1; i++)
         {
             rankFrames[i].SetActive(i < GameManager.Instance.highScore.Count);
-            rankFrames[i].GetComponentInChildren<TMPro.TMP_Text>().text = i < GameManager.Instance.highScore.Count ? GameManager.Instance.highScore[i].ToString() : "";
+            rankFrames[i].GetComponentInChildren<TMPro.TMP_Text>().text = 
+                i < GameManager.Instance.highScore.Count ? GameManager.Instance.highScore[i].ToString() : "";
         }
         // 리스트 생성은 ingame씬 들어갈 때 이루어짐
         // 게임이 껐다 켜젔을 때 랭킹은 남아있어야 하므로 저장한다.

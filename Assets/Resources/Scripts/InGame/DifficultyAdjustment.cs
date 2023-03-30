@@ -33,8 +33,6 @@ public class DifficultyAdjustment : MonoBehaviour
             GameManager.Instance.stageLevel = 4;
             StartCoroutine(ShakeCam());
         }
-        Debug.Log("Level UP");
-        Debug.Log(GameManager.Instance.stageLevel + " 현재 레벨");
     }
 
     // level 4 부터 캠이 흔들리게 난이도 조절
